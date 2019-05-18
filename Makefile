@@ -27,3 +27,6 @@ linkcheck:
 	sphinx-build -b linkcheck ./cortex/ ./build/cortex
 	sphinx-build -b linkcheck ./home/ ./build/
 	sphinx-build -b linkcheck ./v5/ ./build/v5/
+
+chinese:
+	sphinx-build -M html v5-chinese/ build/v5-chinese/

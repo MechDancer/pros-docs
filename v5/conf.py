@@ -131,5 +131,4 @@ html_show_sphinx = False
 highlight_language = "c"
 nitpicky = True
 
-
 blog_path = 'blog/index'
