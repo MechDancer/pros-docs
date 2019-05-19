@@ -1,30 +1,30 @@
 ===================
-Installing on Linux
+在 Linux 上安装
 ===================
 
-Installing the toolchain
+安装工具链
 ------------------------
 
-1. Follow the instructions found `here <https://launchpad.net/~team-gcc-arm-embedded/+archive/ubuntu/ppa>`_ to add and install the latest version of the GNU Arm Embedded toolchain.
+1. 按照 `此处 <https://launchpad.net/~team-gcc-arm-embedded/+archive/ubuntu/ppa>`_ 的说明添加并安装最新版本的 GNU Arm Embedded 工具链。
 
-.. note:: If you are using a non-Debian-based distribution of Linux, check your favorite package repository for an updated version of the toolchain. The main requirement is that you get one that uses GCC version 7.2 or greater.
+.. note:: 如果你使用的不是基于 Debian 的 Linux 发行版，请检查偏好的包仓库以获取更新版本的工具链。主要的要求是你得获得一个使用 GCC 7.2 或更高版本的。
 
-Installing the CLI
+安装 CLI
 ------------------
 
-1. If you do not already have one installed, install a version of Python greater than or equal to 3.6
-2. Check the latest version of the PROS CLI on `our releases page <https://github.com/purduesigbots/pros-cli3/releases/latest>`_, and run :code:`python3.6 -m pip install --user https://github.com/purduesigbots/pros-cli/releases/download/3.X.X/pros_cli_v5-3.X.X-py3-none-any.whl`, replacing the number after 'python' with the version you installed and the Xs with the numbers you found before. If you wish to install for all users, run the command with :code:`sudo` and remove the :code:`--user` flag.
-3. Run :code:`prosv5 --version` to verify the CLI was installed correctly. If the command doesn't work, try restarting your machine.
+1. 如果你还没有安装 Python，安装一个 >= 3.6 版本的。
+2. 在我们的 `发布页 <https://github.com/purduesigbots/pros-cli3/releases/latest>`_ 上检查 PROS CLI 的最新版本，之后运行命令 :code:`python3.6 -m pip install --user https://github.com/purduesigbots/pros-cli/releases/download/3.X.X/pros_cli_v5-3.X.X-py3-none-any.whl`, replacing the number after 'python' with the version you installed and the Xs with the numbers you found before. 如果你想给所有用户安装，在命令前加上 :code:`sudo`，并且移除 :code:`--user` 标识。
+3. 运行 :code:`prosv5 --version` 来检查 CLI 是否安装正确。如果命令不起作用，尝试重新启动你的计算机。
 
-Installing the Editor
+安装编辑器
 ---------------------
 
-.. note:: The following instructions are for installing Atom and cquery. If you intend to use an editor other than Atom, this section is optional.
+.. note:: 以下说明用于安装 Atom 和 Cquery。如果你打算使用 Atom 以外的编辑器，这部分是可选的。
 
-1. Follow the instructions `here <https://github.com/cquery-project/cquery/wiki/Building-cquery>`_ to build and install cquery.
-2. `Install Atom <https://atom.io>`_.
-3. Run :code:`apm install pros-bootstrapper@0.0.12`.
-4. Open Atom and wait for any plugins to finish installing.
-5. Happy coding!
+1. 按照 `此处 <https://github.com/cquery-project/cquery/wiki/Building-cquery>`_ 的说明构建并安装 Cquery。
+2. `安装 Atom <https://atom.io>`_.
+3. 运行 :code:`apm install pros-bootstrapper@0.0.12`.
+4. 打开 Atom，等待插件安装完成。
+5. 享受编码带来的快乐！
 
-.. note:: If Atom seems to get stuck during step 4, restart Atom every few minutes.
+.. note:: 如果在步骤 4 中 Atom 似乎卡住了，每隔几分钟重启一下它。

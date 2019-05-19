@@ -1,57 +1,59 @@
 ===================
-Installing on macOS
+在 macOS 上安装
 ===================
 
-There are currently two ways to install PROS 3 on macOS. The recommended method uses `Homebrew <https://brew.sh/>`_, and the other method involves installing components manually.
+当前有两种在 macOS 上安装 PROS 3 的方式。推荐的方法是使用 `Homebrew <https://brew.sh/>`_，另一种方法是手动安装组件。
 
-Recommended Method (Homebrew)
+推荐方式（Homebrew）
 -----------------------------
 
-The recommended method of installing PROS 3 for macOS involves using `Homebrew <https://brew.sh/>`_.
+推荐的方法是使用 `Homebrew <https://brew.sh/>`_。
 
-1. If you do not already have Homebrew installed, install it by following the instructions on `their site <https://brew.sh>`_. This will take a while, and may prompt you to follow some additional instructions.
-2. Once you have Homebrew installed, run :code:`brew tap osx-cross/arm && brew install arm-gcc-bin` to register a repository with Homebrew that contains the toolchain used to build PROS projects, and then install the toolchain.
-3. Run :code:`brew tap purduesigbots/pros` to register the PROS Homebrew repository with Homebrew.
-4. Run :code:`brew cask install pros-editor` to install the PROS Editor (the CLI will also be installed). This may also take a while.
-5. That's it! You can now start using PROS 3.
+1. 如果你还没装 Homebrew 按照它的 `说明 <https://brew.sh>`_ 安装。这会花上点时间，并可能提示你遵循一些附加的说明。
+2. 当你装好了 Homebrew，运行 :code:`brew tap osx-cross/arm && brew install arm-gcc-bin` 来向包含用于构建 PROS 工程的工具链的仓库注册，然后安装工具链。
+3. 运行 :code:`brew tap purduesigbots/pros` 向 Homebrew 注册 PROS 的仓库。
+4. 运行 :code:`brew cask install pros-editor` 安装 PROS 编辑器（CLI 也会被安装）。这会花上一点时间。
+5. 就这样！你现在可以开始使用 PROS 3 了。
 
-.. note:: If you do not want to use the PROS Editor, and instead intend to use only the PROS CLI, substitute the command in step 3 with the following: :code:`brew install pros-cli`.
+.. note:: 如果你不想用 PROS 编辑器而只想用 PROS CLI，使用， :code:`brew install pros-cli` 来替换步骤 3 中的命令。
 
-Other Methods
+其他方式
 -------------
 
-If you don't want to use Homebrew to install PROS 3, you can install all the components manually.
+如果你不想使用 Homebrew 安装 PROS 3， 你可以手动安装组件。
 
-Install the toolchain
+安装工具链
 ^^^^^^^^^^^^^^^^^^^^^
-1. Download the latest version of the GNU Arm Embedded Toolchain for macOS from `their site <https://developer.arm.com/open-source/gnu-toolchain/gnu-rm/downloads>`_.
-2. Once you have downloaded the toolchain, double click the file to extract its contents.
-3. Copy the contents of the :code:`gcc-arm-none-eabi-X-20XX-qX-update` folder (where the Xs are numbers specific to the version you downloaded) to another folder, for example :code:`/usr/local/lib/pros-toolchain`.
-4. Now you will need to link the toolchain binaries to somewhere that the system will be able to find them. There are two ways to do this:
+1. 在 `这里 <https://developer.arm.com/open-source/gnu-toolchain/gnu-rm/downloads>`_ 下载 macOS 上最新版本的 GNU Arm Embedded 工具链。
+2. 当你下载好了工具链，双击解压它。
+3. 把从 :code:`gcc-arm-none-eabi-X-20XX-qX-update` 文件夹（X 是你下载的版本）解压出来的东西复制到另一个文件夹，例如 :code:`/usr/local/lib/pros-toolchain`。
+4. 现在，你需要将工具链二进制文件链接到系统能够找到它们的地方。这有两种办法：
 
-   i) (recommended, easy to update) run ``mkdir -p /usr/local/bin/pros-toolchain && ln -s /usr/local/lib/pros-toolchain/bin/* /usr/local/bin/pros-toolchain`` (replacing ``/usr/local/lib/pros-toolchain`` with the path to the folder you made in step 4 above). Finally, add ``/usr/local/bin/pros-toolchain`` to the end of your ``/etc/paths`` file.
-   ii) (easier, less easy to update) simply run ``ln -s /usr/local/lib/pros-toolchain/bin/* /usr/local/bin``.
+   i) （推荐，方便更新) 运行 ``mkdir -p /usr/local/bin/pros-toolchain && ln -s /usr/local/lib/pros-toolchain/bin/* /usr/local/bin/pros-toolchain`` (将 ``/usr/local/lib/pros-toolchain`` 替换为第 4 步中你创建文件夹的路径）。最后，添加 ``/usr/local/bin/pros-toolchain`` 到 ``/etc/paths`` 文件的结尾。
+   ii) (更简单，更新没那么方便) 仅需运行 ``ln -s /usr/local/lib/pros-toolchain/bin/* /usr/local/bin``。
 
-Install the CLI
+   .. note:: 译者注：第 2 种方式同样需要将 ``/usr/local/lib/pros-toolchain`` 替换为第 4 步中你创建文件夹的位置。
+
+安装 CLI
 ^^^^^^^^^^^^^^^
-1. Install Python 3.6 or higher from `the Python website <http://python.org>`_.
-2. Install the CLI by downloading the latest version of the Python Wheel file (.whl) from `here <https://github.com/purduesigbots/pros-cli3/releases/latest>`_. Once downloaded, run :code:`python3 -m pip install ~/Downloads/pros-cli-v5_3.X.X-py3-none-any.whl` (replacing that path with the path to which you downloaded the file).
+1. 在 `Python 官网 <http://python.org>`_ 安装 >= 3.6 版本的 Python。
+2. 从 `这里 <https://github.com/purduesigbots/pros-cli3/releases/latest>`_ 下载 Python Wheel 文件 （.whl）来下载最新版本的 CLI。当你下载好之后，运行 :code:`python3 -m pip install ~/Downloads/pros-cli-v5_3.X.X-py3-none-any.whl` （将路径替换为你的下载的文件的）。
 
-Install the Editor
+安装编辑器
 ^^^^^^^^^^^^^^^^^^
 
-.. note:: this section is optional if you intend to use an editor other than the PROS Editor
+.. note:: 如果你打算使用 PROS 以外的编辑器，这部分是可选的。
 
-1. Build and install cquery by following the instructions on `their wiki page <https://github.com/cquery-project/cquery/wiki/Building-cquery>`_.
-2. Download the :code:`pros-editor-mac.zip` file from `our releases page <https://github.com/purduesigbots/atom/releases/latest>`_. Once downloaded, double click to extract the application, then drag the :code:`PROS Editor.app` file to your :code:`/Applications` folder.
+1. 根据 `他们 WIKI <https://github.com/cquery-project/cquery/wiki/Building-cquery>`_ 上的说明构建并安装 Cquery。
+2. 在我们的 `发布页 <https://github.com/purduesigbots/atom/releases/latest>`_ 上下载 :code:`pros-editor-mac.zip`。当你下载好之后，双击解压，然后把 :code:`PROS Editor.app` 拖到 :code:`/Applications` 里。
 
-Requirements
+要求
 ------------
 
-Minimum macOS version: 10.8
-Minimum Python version: 3.6
+最低 macOS 版本： 10.8
+最低 Python 版本： 3.6
 
-Known Issues
+已知问题
 ------------
 
 :code:`RuntimeError: Click will abort further execution because Python 3 was configured

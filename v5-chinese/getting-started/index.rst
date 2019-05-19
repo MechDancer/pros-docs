@@ -1,21 +1,21 @@
 ===============
-Getting Started
+入门
 ===============
 
-If this is your first time working with PROS for V5, you've come to the right place.
-These guides are designed to walk you through the PROS installation process and starting
-your first PROS project.
+如果这是你第一次在 V5 上使用 PROS， 你来对了地方。
+这些指南旨在引导你完成 PROS 的安装过程，并开启
+你的第一个 PROS 项目。
 
-For more advanced, topical guides, visit the :doc:`../tutorials/index` section.
+对于进一步的专题指南，请见 :doc:`../tutorials/index` 部分。
 
 .. toctree::
-   :caption: First Time PROS User?
+   :caption: 第一次使用 PROS？
    :titlesonly:
 
    new-users
 
 .. toctree::
-   :caption: Installation Guides
+   :caption: 安装指南
    :titlesonly:
 
    windows

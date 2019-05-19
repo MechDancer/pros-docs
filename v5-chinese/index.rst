@@ -5,7 +5,7 @@ PROS：文档主页
 .. toctree::
    :hidden:
    :maxdepth: -1
-   :caption: Home
+   :caption: 主页
 
    self
    ./blog/index
@@ -15,7 +15,7 @@ PROS：文档主页
 .. toctree::
    :hidden:
    :maxdepth: -1
-   :caption: Getting Started
+   :caption: 入门
 
    ./getting-started/index
    ./getting-started/new-users
@@ -24,7 +24,7 @@ PROS：文档主页
 .. toctree::
    :hidden:
    :maxdepth: -1
-   :caption: Tutorials
+   :caption: 教程
 
    ./tutorials/index
 
@@ -40,7 +40,7 @@ PROS：文档主页
 .. toctree::
    :hidden:
    :maxdepth: -1
-   :caption: Tools
+   :caption: 工具
 
    ./cli/index
    ./editor/index
