@@ -1,89 +1,89 @@
 ==========
-Coding FAQ
+编码常见问题
 ==========
 
-Compile-Time Issues
+编译期问题
 ===================
 
- * ``undefined reference to ...`` or ``implicit declaration of function ...``:
-    A function name is spelled incorrectly, or the function was incorrectly
-    declared in a header file. Custom headers must be included in ``main.h`` or
-    in the file in which they are used.
+ * ``undefined reference to ...`` 或 ``implicit declaration of function ...``:
+    一个函数的名称拼写错误或函数在头文件中
+    错误声明。自定义头文件或
+    使用它们的文件中必须包含 ``main.h``。
 
  * ``format ... expects argument of type ..., but argument has type ...``:
-    The value provided to a function like `printf <http://www.cplusplus.com/reference/cstdio/printf/>`_
-    or `lcd_print <../../api/c/llemu.html#lcd-print>`_ does not match the expected
-    type inferred from the format string. Some instances of this warning can be
-    safely ignored, but crashes can occur if types ``double`` or ``long long`` are
-    mixed with other types.
+    为 `printf <http://www.cplusplus.com/reference/cstdio/printf/>`_
+    或 `lcd_print <../../api/c/llemu.html#lcd-print>`_ 等函数提供的值与从字符串
+    推断出的预期类型不匹配。在一些情况下可以安全地忽略次警告，
+    但如果类型 ``double`` 和 ``long long`` 与其他类型混合则
+    会发生崩溃。
 
  * ``assignment makes pointer from integer without a cast``:
-    Typically caused when a C pointer has the wrong number of asterisks to
-    `dereference <http://stackoverflow.com/a/4955297/3681958>`_ it, or when
-    assigning a constant to ``pointer`` (instead of ``*pointer``).
+    通常由于一个 C 指针使用了错误的星号来
+    `解引用 <http://stackoverflow.com/a/4955297/3681958>`_ 或者
+    把一个常量赋值给 ``pointer`` （而不是 ``*pointer``）。
 
-Run-Time Issues
+运行期问题
 ===============
 
- * **Some tasks are running, others are not:**
-    A task is not waiting using `delay <../../api/c/rtos.html#delay>`_ or
-    `task_delay_until <../../api/c/rtos.html#task-delay-until>`_. Due to the fact that
-    PROS utilizes a priority based non-preemptive scheduler, tasks of higher or
-    equal priority to the blocking task will still run while lower priority tasks
-    will not. This scenario is also known as
-    `starvation <https://en.wikipedia.org/wiki/Starvation_(computer_science)>`_.
-    See `Tasks/Multithreading </tutorials/topical/multitasking>`_ for more information.
+ * **有些任务正在运行，有些没有运行：**
+    一个任务没有使用 `delay <../../api/c/rtos.html#delay>`_ 或
+    `task_delay_until <../../api/c/rtos.html#task-delay-until>`_ 等待。由于
+    PROS使用基于优先级的非抢占式调度程序，因此优先级高于
+    或等于阻塞任务的任务仍会运行，而优先级较低的任务不会运行。
+    这种情况也被称为
+    `饥饿 <https://en.wikipedia.org/wiki/Starvation_(computer_science)>`_.
+    有关更多信息，请参见 `任务/多线程 </tutorials/topical/multitasking>`_。
 
- * **VEX LCD updates very slowly or is "frozen":**
-    A task is not waiting using `delay <../../api/c/rtos.html#delay>`_ or
-    `task_delay_until <../../api/c/rtos.html#task-delay-until>`_. From the kernel's
-    perspective, updating the LCD is usually less important than how well the
-    robot is running, so PROS prioritizes user tasks over the LCD.
+ * **VEX LCD 刷新非常慢，或冻屏：**
+    一个任务没有使用 `delay <../../api/c/rtos.html#delay>`_ 或
+    `task_delay_until <../../api/c/rtos.html#task-delay-until>`_ 等待。从内核角度来看，
+    更新 LCD 没有机器人运行重要。
+    因此， PROS 优先处理用户任务而不是 LCD。
 
-    The LCD is only updated if all other tasks are waiting.
+    只有当所有其他任务都在等待时，LCD 才会更新。
 
- * **Neither autonomous nor driver control code starts:**
-    The ``initialize()`` function may still be running. Some tasks such as
-    `analog_calibrate <../../api/c/adi.html#analog-calibrate>`_ take time.
+ * **自动或遥控代码都不会启动：**
+    ``initialize()`` 函数可能仍在运行。一些任务例如
+    `analog_calibrate <../../api/c/adi.html#analog-calibrate>`_ 很耗时。
 
-    If the ``initialize()`` function implements some type of loop or autonomous
-    selection routine, verify that it actually has a means of ending.
+    如果 ``initialize()`` 函数实现了某类循环或
+    selection routine，请确保它能够结束。
 
- * **Code restarts unexpectedly:**
-    A run-time error has caused the program to crash.
-    `Debugging <./debugging>`_ may reveal the cause of the error.
-    Examine any newly added code for possible logical errors. Some common error
-    messages include:
+ * **代码意外重新启动:**
+    一个运行期错误导致程序崩溃。
+    `调试 <./debugging>`_ 可能揭示错误的原因。
+    检查任何新添加的代码是否有可能出现逻辑错误。
+    一些常见的错误消息包括：
 
    * **Segmentation Fault:**
-      Indicates that an invalid C pointer has been used. Check for confusion
-      between pointers and regular variables and that an invalid pointer has not
-      been passed to a PROS API function.
+      这说明使用了无效的 C 指针. 检查指针和常规变量之间是否混淆
+      以及无效指针是否没有传递给
+      PROS API 函数。
 
    * **Stack Overflow:**
-      Often indicates infinite recursion, or that the stack size for a custom task
-      is too small. Calling many layers of functions and declaring large local
-      variables can require large amounts of space on the stack. If this error
-      occurs in a default task like ``autonomous()``, consider changing code to
-      reduce the stack requirements, or creating a new task with a larger stack
-      size using `task_create <../../api/c/rtos.html#task_create>`_ to handle large jobs.
-      Large arrays declared inside functions can usually be declared globally to
-      alleviate pressure on stack space.
+      通常说明无限递归，或者自定义任务的堆栈大小太小。
+      调用多层函数和声明大的局部变量
+      可能需要堆栈上的大量空间。如果错误
+      发生在像 ``autonomous()`` 的默认任务中，考虑更改代码以
+      减少对栈的需求。你也可以使用 `task_create <../../api/c/rtos.html#task_create>`_
+      来创建栈较大，用于处理大型作业的任务。
+      在函数内部声明的大型数组通常可以全局声明，
+      以减轻对栈空间的压力。
 
    * **System Task Failure:**
-      Too many tasks were running for the system to start a new one. Disable or
-      merge unnecessary tasks to eliminate this error.
+      系统运行的任务太多，无法启动新任务。
+      禁用或合并不必要的任务以消除此错误。
 
  * **Cortex blinking red light after upload:**
-    Turn the Cortex microcontroller off and on again. This usually resolves the
-    problem, and it is generally good practice to re-initialize the robot to
-    simulate conditions at most competitions. If the error persists, see the
-    "**Code restarts unexpectedly**" section above.
+    重启 Cortex 微控制器。这样通常能解决
+    问题。而且在大多数情况下重新初始化来模拟比赛环境是一个很好的习惯
+    如果错误仍存在，请见
+    上面的 "**代码意外重新启动**" 一节。
 
- * `printf <printf_>`_ **doesn't work**:
-    `printf <http://www.cplusplus.com/reference/cstdio/printf/>`_ prints
-    information over a serial connection (`Debugging <../tutorials/general/debugging>`_),
-    not to the VEX LCD. To print to the LCD, use `lcd_print <../../api/c/llemu.html#lcd-print>`_
-    instead.
+ * `printf <printf_>`_ **不起作用**:
+    `printf <http://www.cplusplus.com/reference/cstdio/printf/>`_ 通过
+    串口连接（`调试 <../tutorials/general/debugging>`_）打印信息，
+    而不是 VEX LCD。想要打印至 LCD 上，请改用 
+    `lcd_print <../../api/c/llemu.html#lcd-print>`_。
 
 .. _printf: http://www.cplusplus.com/reference/cstdio/printf/

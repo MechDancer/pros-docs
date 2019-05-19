@@ -15,7 +15,7 @@
 4. 运行 :code:`brew cask install pros-editor` 安装 PROS 编辑器（CLI 也会被安装）。这会花上一点时间。
 5. 就这样！你现在可以开始使用 PROS 3 了。
 
-.. note:: 如果你不想用 PROS 编辑器而只想用 PROS CLI，使用， :code:`brew install pros-cli` 来替换步骤 3 中的命令。
+.. note:: 如果你不想用 PROS 编辑器而只想使用 PROS CLI， :code:`brew install pros-cli` 来替换步骤 3 中的命令。
 
 其他方式
 -------------

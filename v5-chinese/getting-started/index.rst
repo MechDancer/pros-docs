@@ -23,7 +23,7 @@
    linux
 
 .. toctree::
-   :caption: FAQ
+   :caption: 常见问题
    :titlesonly:
 
    faq

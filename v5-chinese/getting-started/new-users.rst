@@ -69,7 +69,7 @@ PROS 教程旨在展示如何将 C/C++ 编程应用\
 
 -  `调试 <../tutorials/general/debugging.html>`_
 
--  `常见开发问题 <./faq.html>`_
+-  `常见问题 <./faq.html>`_
 
 之后，你还能浏览从 `模数接口 <../tutorials/topical/adi.html>`_ \
 到 `任务与多线程 <../tutorials/topical/multitasking.html>`_ 的各类专题教程。

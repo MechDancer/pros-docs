@@ -1,22 +1,22 @@
 =========
-Tutorials
+教程
 =========
 
-Learning a new coding platform is often a rather daunting task. For this
-reason we prepared some small tutorials with examples on how to interact
-with core components of PROS on your VEX V5 system.
+学习一个新的编程平台通常是一项相当艰巨的任务。为此，
+我们准备了一些小教程和示例，介绍
+如何与 VEX V5 PROS 的核心组件交互。
 
-The PROS tutorials are split into three sections:
+PROS 教材分为三个部分：
 
 .. contents:: :local:
 
-General Tutorials
+常规教程
 =================
 
-If you're still new to writing software or PROS, and looking for additional information
-beyond our `Getting Started <../getting-started/index.html>`_ guides, the **General
-Tutorials** are a great resource for topics like debugging and the PROS project
-structure.
+如果你还对 PROS 软件编写不熟悉，并且在 `入门 <../getting-started/index.html>`_ 指南
+外寻找其他信息，
+**常规教程** 对于调试或 PROS 项目结构这类专题是一个很好
+的资源。
 
 .. toctree::
    :glob:
@@ -24,13 +24,13 @@ structure.
 
    ./general/*
 
-Walkthrough Tutorials
+演练教程
 =====================
 
-If you want to write full sample programs to learn to use PROS through practical
-applications, or teach students to use PROS in a classroom environment, the
-**Walkthrough Tutorials** are a great resource to go step by step through the
-process of writing a PROS program.
+如果你想编写完整的示例程序，通过实践来学习使用PROS
+应用程序，或在课堂环境中教学生如何使用 PROS，
+**演练教程** 是一个很好的资源来逐步
+编写 PROS 程序。
 
 .. toctree::
    :glob:
@@ -38,11 +38,11 @@ process of writing a PROS program.
 
    ./walkthrough/*
 
-Topical Tutorials
+专题教程
 =================
 
-If you want more information about using a particular part of the `PROS API <../api/index.html>`_, the **Topical Tutorials**
-offer longer examples and more detail about using the PROS API.
+如果你想要更多关于 `PROS API <../api/index.html>`_ 特定部分的信息，**专题教程**
+提供了关于使用 PROS API 更长的例子和更多的细节。
 
 .. toctree::
    :glob:
