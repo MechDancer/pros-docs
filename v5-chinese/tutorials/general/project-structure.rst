@@ -1,18 +1,18 @@
 =================
-Project Structure
+项目结构
 =================
 
-PROS projects are internally composed of three parts: the **PROS library** (found
-in ``/firmware``), the **header** files (found in ``/include``), and **user code**
-(found in ``/src``).
+PROS 项目在内由三部分组成：**PROS 库** （位于
+``/firmware``)、**头** 文件（位于 ``/include``）、**用户代码**\
+（位于 ``/src``）。
 
 firmware
 ========
 
-The **PROS library** is a single file containing the core PROS routines.
-This file does not need to be changed. If there appears to be an issue
-with a core PROS function, please file an issue on
-`GitHub <https://github.com/purduesigbots/pros/issues>`_.
+**PROS 库** 是一个包含 PROS 核心例程的单个文件。\
+该文件不需要更改。如果核心 PROS 函数出现问题，\
+请在 `GitHub <https://github.com/purduesigbots/pros/issues>`_
+提出 issue。
 
 include
 =======

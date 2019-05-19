@@ -1,20 +1,20 @@
 ===================
-Combining C and C++
+结合 C 与 C++
 ===================
 
-The PROS C and C++ APIs cover the exact same feature set, which means that there
-is no significant advantage to using functions from one API in another language.
-However, if you do find yourself wanting to use C API functions in C++, these functions
-are accessible through the namespace ``pros::c``.
+PROS C 和 C++ API 覆盖了完全相同的特性集，这意味着\
+在一种语言中使用另一种语言的 API 没有明显优势。\
+但是，如果你发现想在 C++ 中使用 C API 中的函数，\
+它们可以通过命名空间 ``pros::c`` 来访问。
 
-This can also be done by using the ``pros::c`` namespace as such:
+也可以这样使用 ``pros::c`` 命名空间：
 
 ::
 
   using namespace pros::c;
 
-As always, bear in mind the dangers of setting a global namespace and only use the
-``using`` keyword in appropriate scopes.
+和往常一样，请记住设置全局命名空间的危险，并且只在适当的作用域内使用
+``using`` 关键字。
 
-For guidance on mixing C and C++ code with code you've written, see
+有关 C 和 C++ 代码与你编写的代码混合的指南，请参阅
 `this tutorial <https://isocpp.org/wiki/faq/mixing-c-and-cpp>`_.
