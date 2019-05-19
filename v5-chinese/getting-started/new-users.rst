@@ -1,24 +1,24 @@
-===========================
-PROS First Time Users Guide
-===========================
+==============
+PROS 初学者指南
+==============
 
-The most important characteristic of PROS to note when getting started
-is that PROS is just standard C or C++ programming. Anything that works in
-standard C/C++ will work as a
-part of a PROS project, and similarly the errors given for code that
-doesn't work will match errors given for any similar C/C++ code. Learning C/C++
-is essential for using PROS.
+入门时，关于 PROS 的特征，最应该注意的是\
+开发 PROS 就是开发标准的 C 或 C++。任何在\
+标准 C/C++ 中有效的东西在 \
+PROS 项目中同样有效，同时，无效的代码给出\
+与一般 C/C++ 给出的的错误也相同。学习 C/C++ \
+对于使用 PROS 至关重要。
 
-I've never used PROS or written C/C++ code before, how do I start?
-------------------------------------------------------------------
+我从未使用过 PROS，之前也没有编写过 C/C++ 代码，我该从哪里开始？
+--------------------------------------------------------
 
-If you have not used PROS or done non-VEX C/C++ code development before,
-we recommend that you check out C tutorials on the following topics:
+如果你从未使用过 PROS，之前也没有开发过非 VEX C/C++ 项目，\
+我们推荐你先浏览下列 C 语言教程：
 
--  `Functions <http://www.studytonight.com/c/user-defined-functions-in-c.php>`__.
-   C is a language that heavily emphasizes functions, and knowing how
-   they work is essential to using PROS. The `PROS API <../api/index.html>`_ is a set of functions,
-   so any time that you want to interact with a sensor or motor, you're using functions.
+-  `函数 <http://www.studytonight.com/c/user-defined-functions-in-c.php>`__.
+   C 是一种极其强调函数的语言，了解函数\
+   的作用是使用 PROS 的基础。 `PROS API <../api/index.html>`_ 是一系列函数，\
+   因此只要你想和传感器或电机交互，就一定会用到函数。
 
 -  `Header
    Files <https://www.tutorialspoint.com/cprogramming/c_header_files.htm>`__.
