@@ -63,7 +63,7 @@ PROS 教程旨在展示如何将 C/C++ 编程应用\
 你准备分支出来，创建自己的自定义项目了，\
 建议浏览以下教程： 
 
--  `PROS 项目结构<../tutorials/general/project-structure.html>`_
+-  `PROS 项目结构 <../tutorials/general/project-structure.html>`_
 
 -  `上传代码 <../tutorials/walkthrough/uploading.html>`_
 
