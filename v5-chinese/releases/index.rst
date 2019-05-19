@@ -1,8 +1,8 @@
 =====================
-Version Release Notes
+版本发行说明
 =====================
 
-Kernel Releases
+内核发布
 ===============
 
 .. postlist:: 5
@@ -11,9 +11,9 @@ Kernel Releases
    :list-style: circle
    :tags: kernel-release
 
-These notes are pulled from `Github Releases <https://github.com/purduesigbots/pros/releases>`_.
+这些是从 `Github Releases <https://github.com/purduesigbots/pros/releases>`_ 上拉过来的。
 
-CLI Releases
+CLI 发布
 ============
 
 .. postlist:: 5
@@ -22,4 +22,4 @@ CLI Releases
    :list-style: circle
    :tags: cli-release
 
-These notes are pulled from `Github Releases <https://github.com/purduesigbots/pros-cli3/releases>`_.
+这些是从 `Github Releases <https://github.com/purduesigbots/pros-cli3/releases>`_ 上拉过来的。

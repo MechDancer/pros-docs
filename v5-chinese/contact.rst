@@ -1,7 +1,7 @@
-Getting Help
+获得帮助
 ============
 
-Having an issue using PROS? You can get help in several ways:
+使用 PROS 遇到了问题？你可以通过以下几种方式获得帮助：
 
 * Posting on the `VEX Forum <https://www.vexforum.com/c/edr-technical-support/pros-support>`_ (best for Q&A)
 * Joining us on `Slack <https://join.slack.com/t/pros-development/shared_invite/enQtMzIyNzA2MTU2MDgwLWNlNTk3ZjA3ZWZmM2Q0YzI3NDZkZWE0MzU4ODdkM2U5MzhjZDY4M2RjNzBiZWYzODk0MTdkYzBiMzJjMWUyYmI>`_ (best for debugging an issue with the PROS Environment)

@@ -2,12 +2,12 @@
 PROS FAQ
 ========
 
-.. note:: This document exists to answer questions about what PROS is and its general use.
-   For more coding-specific help, visit :doc:`../tutorials/general/coding-faq`
+.. note:: 本文档旨在回答什么是 PROS 和它的通常用法。
+   对于代码上的帮助请见 :doc:`../tutorials/general/coding-faq`
 
-.. warning:: This document is in progress, we will be adding content as we're asked pertinent questions.
+.. warning:: 本文档还未完成，我们将在被问到相关问题时添加内容。
 
-Does PROS have a graphics library for the Brain's Screen?
+PROS 有 Brain 屏幕的图形库吗？
 =========================================================
 
-Yes, we have ported `LVGL <https://littlevgl.com/>`_ for use with the V5 Brain. You can find documentation for it on the LVGL site.
+是的，我们在 V5 Brain 上移植了 `LVGL <https://littlevgl.com/>`_。你可以在 LVGL 官网找到它的文档。

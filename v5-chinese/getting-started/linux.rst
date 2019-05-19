@@ -13,7 +13,7 @@
 ------------------
 
 1. 如果你还没有安装 Python，安装一个 >= 3.6 版本的。
-2. 在我们的 `发布页 <https://github.com/purduesigbots/pros-cli3/releases/latest>`_ 上检查 PROS CLI 的最新版本，之后运行命令 :code:`python3.6 -m pip install --user https://github.com/purduesigbots/pros-cli/releases/download/3.X.X/pros_cli_v5-3.X.X-py3-none-any.whl`, replacing the number after 'python' with the version you installed and the Xs with the numbers you found before. 如果你想给所有用户安装，在命令前加上 :code:`sudo`，并且移除 :code:`--user` 标识。
+2. 在我们的 `发布页 <https://github.com/purduesigbots/pros-cli3/releases/latest>`_ 上检查 PROS CLI 的最新版本，之后运行命令 :code:`python3.6 -m pip install --user https://github.com/purduesigbots/pros-cli/releases/download/3.X.X/pros_cli_v5-3.X.X-py3-none-any.whl`，把 'python' 后面的版本替换成你装的，把 Xs 替换成你下载的。如果你想给所有用户安装，在命令前加上 :code:`sudo`，并且移除 :code:`--user` 标识。
 3. 运行 :code:`prosv5 --version` 来检查 CLI 是否安装正确。如果命令不起作用，尝试重新启动你的计算机。
 
 安装编辑器
@@ -27,4 +27,4 @@
 4. 打开 Atom，等待插件安装完成。
 5. 享受编码带来的快乐！
 
-.. note:: 如果在步骤 4 中 Atom 似乎卡住了，每隔几分钟重启一下它。
+.. note:: 如果在步骤 4 中 Atom 看起来卡住了，每隔几分钟重启一下它。
