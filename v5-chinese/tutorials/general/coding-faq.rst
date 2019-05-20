@@ -20,7 +20,7 @@
  * ``assignment makes pointer from integer without a cast``:
     通常由于一个 C 指针使用了错误的星号来
     `解引用 <http://stackoverflow.com/a/4955297/3681958>`_，或者\
-    把一个常量赋值给 ``pointer`` （而不是 ``*pointer``）。
+    把一个常量赋值给 ``pointer``（而不是 ``*pointer``）。
 
 运行期问题
 ===============

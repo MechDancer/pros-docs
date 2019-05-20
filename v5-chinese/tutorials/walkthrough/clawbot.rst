@@ -1,49 +1,48 @@
 =======================
-Programming the Clawbot
+为爪爪机器人编程
 =======================
 
 .. contents:: :local:
 
-Objective
+目的
 =========
 
-This tutorial will guide you through basic programming of the VEX
-Clawbot.
+本教程将指导您完成 VEX 爪爪机器人\
+的基本编程。
 
 Intended Audience
 =================
 
-This tutorial is intended for developers with some programming
-experience, but with little to no experience with the PROS library. If
-you haven't programmed before, we recommend checking out all the
-"Introduction and Basic C Features" sections of `this tutorial
-series <http://www.studytonight.com/c/overview-of-c.php>`__; you may also
-benefit from the "Pointers, Arrays and Strings" sections as well
-(although they aren't as pertinent).
+本教程面向有一些编程经验，但对 PROS 库陌生的开发者。\
+如果你以前从来没写过程序，我们推荐你查看\
+`这个教程系列 <http://www.studytonight.com/c/overview-of-c.php>`__\的\
+《简介和基本 C 特性》。\
+你也可以受益于“指针、数组和字符串部分”\
+尽管它们并不相关。
 
-Goals
+目标
 =====
 
-At the end of this tutorial you will have:
+在本教程结束时，你将获得：
 
--  Understood the basic project structure of PROS
--  Programmed a basic chassis with "tank" control or "arcade" control
--  Programmed buttons to control the clawbot's lift
--  Programmed a joystick axis to control the clawbot's claw
--  Understood the standard subsystem module methodology
--  Programmed a dead-reckoned autonomous routine
+-  理解 PROS 基本项目结构
+-  会使用“坦克”控制或“arcade”控制对基本底盘进行编程
+-  编好的用于控制爪爪机器人升降的按钮
+-  编好的用于控制爪爪的摇杆
+-  理解标准子系统模块方法
+-  编好的航位推算（dead-reckoned）自动例程
 
-The Clawbot 
+爪爪机器人
 ===========
 
-Here's the robot we'll be programming:
+这是我们要编程的机器人：
 
 .. image:: /images/tuts/clawbot1.jpg
 
-You can follow VEX's tutorial for building this robot `here <https://v5beta.vex.com/parent-wrapper.php?id=v5-with-clawbot>`_.
+你可以根据 VEX 的\ `教程 <https://v5beta.vex.com/parent-wrapper.php?id=v5-with-clawbot>`_\搭建这个机器人。
 
-For the purposes of this tutorial, we've plugged in our motors into the
-following ports:
+在本教程中，\
+我们将电机插入了以下端口：
 
 +--------+----------------+--------+---------------+
 | Port   | Description    | Port   | Description   |
@@ -71,7 +70,7 @@ following ports:
 
 Port 21: Radio
 
-For the ADI:
+ADI:
 
 +--------+----------------+--------+---------------+
 | Port   | Description    | Port   | Description   |
@@ -85,7 +84,7 @@ For the ADI:
 | D      |                | H      | Arm Limit     |
 +--------+----------------+--------+---------------+
 
-Creating the Project 
+创建项目
 ====================
 
 With Atom started, you can create a new PROS project by clicking the
@@ -98,7 +97,7 @@ Pick a directory to create the new project in and click Create. The PROS
 CLI will now copy the latest kernel template into the specified
 directory and Atom will open it.
 
-PROS Project Structure
+PROS 项目结构
 ======================
 
 When you create your project, PROS will copy all of the files necessary
@@ -136,7 +135,7 @@ to build your project. The structure of the project looks like:
    files (opcontrol.cpp, autonomous.cpp, and initialize.cpp). They could be all in the same file, but it can be helpful to 
    organize your functions into multiple files to keep things from becoming messy.
 
-Drive Control 
+遥控 
 =============
 
 Let's start with the simplest operator control setup for the clawbot - tank drive control. We'll map
@@ -239,7 +238,7 @@ To test this code, run the following commands in the terminal window to create, 
 
 These 2 commands can be simplified to ```prosv5 mu``.
 
-Arcade Control 
+Arcade 控制
 ==============
 
 While tank drive control is perfectly suitable for the driving style of some individuals, it is worth
@@ -304,7 +303,7 @@ wheels.
 
 As with the tank drive code, this can be uploaded with the ``prosv5 mu`` command.
 
-Arm Control 
+机械臂控制
 ===========
 
 Next let's control the clawbot's arm. This will not require the use of a joystick, but instead 
@@ -424,7 +423,7 @@ is pressed on the controller, and move the lift in that direction if so.
            }
          }
        
-Claw Control 
+爪爪控制
 ============
 
 We will control the claw in the same manner as the lift, by toggling its movement with a controller button.
@@ -528,7 +527,7 @@ We will control the claw in the same manner as the lift, by toggling its movemen
            }
          }
 
-Reading the Switches 
+读取开关
 ====================
 
 The bump switches, or buttons, are plugged into the ADI and attached to the rear of the robot. We'll 
@@ -824,7 +823,7 @@ we will prevent the lift from being driven down further.
            }
          }
 
-Simple Autonomous
+简单自动
 =================
 
 The autonomous program runs without the use of a controller. We will make a simple autonomous program that drives straight.
