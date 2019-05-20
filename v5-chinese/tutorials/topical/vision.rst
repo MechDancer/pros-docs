@@ -1,24 +1,24 @@
 =============
-Vision Sensor
+视觉传感器
 =============
 
 .. note:: For a full list of functions for interacting with the V5 Vision Sensor, see its
           `C API <../../api/c/vision.html>`_ and `C++ API <../../api/cpp/vision.html>`_.
 
-Setting Signatures
+设置签名
 ==================
 
 The first step to using the vision sensor is setting color signatures for the sensor
 to recognize as objects. This is done through the V5 Vision Utility program.
 
-Retrieving Objects
+检索对象
 ==================
 
 The primary function of the vision sensor is returning objects, or blobs of color
 detected by the sensor. The characteristics of an object are defined in
 `vision_object_s_t <../../api/c/vision.html#vision_object_s_t>`_.
 
-By Size
+通过大小
 -------
 
 The simplest way to interact with the vision sensor is to get an object by its size.
@@ -62,7 +62,7 @@ The simplest way to interact with the vision sensor is to get an object by its s
          }
 
 
-By Signature
+通过签名
 ------------
 
 If you have multiple signatures saved to the vision signature, you will most likely
@@ -109,7 +109,7 @@ implements this functionality.
            }
          }
 
-Changing the Object Coordinates
+更改对象坐标
 ===============================
 
 Each returned object from the vision sensor comes with a set of coordinates telling
@@ -146,7 +146,7 @@ in this configuration.
            pros::Vision vision_sensor (VISION_PORT, pros::c::E_VISION_ZERO_CENTER);
          }
 
-Exposure Setting
+曝露设置
 ================
 In PROS Kernel 3.1.4 and earlier, the vision sensor exposure parameter was in the
 range [0,58]. In PROS Kernel 3.1.5 and newer, the parameter is scaled to be in

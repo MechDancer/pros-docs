@@ -1,6 +1,6 @@
-====================================
-Wireless Upload and Hot/Cold Linking
-====================================
+=================
+无线上传及冷热插拔
+=================
 
 .. note:: Wireless Upload requires at least CLI 3.1.4, Kernel 3.1.6, VEXos 1.0.5, and OkapiLib 3.3.12 (if used).
 
@@ -24,7 +24,7 @@ will automatically detect when you're using the same combination of libraries an
 "cold" code. Verification that the library is present is done with filename and checksum of the file. As a result,
 if you use the same combination of libraries (cold image), only one copy of the cold iamge is uploaded to the V5.
 
-Large Projects
+大项目
 --------------
 Projects with large codebases may still take some time to upload even with hot/cold linking. You may be able to 
 reduce the size of your hot image by making part of your project a library so that some code is included in the
@@ -74,7 +74,7 @@ An example of a modified Makefile's relevant lines is shown below:
     EXCLUDE_SRC_FROM_LIB+=$(SRCDIR)/scripts             # exclude any files in the src/scripts directory
     EXCLUDE_SRC_FROM_LIB+=$(SRCDIR)/lcdselector.cpp     # exclude src/lcdselector.cpp
 
-Hot/Cold Linking Troubleshooting
+冷热插拔疑难解答
 --------------------------------
 Since hot/cold linking involves ensuring two compiled programs interact consistently, there may be additional runtime
 issues running in this mode. This section serves as a guide for debugging these sorts of issues.

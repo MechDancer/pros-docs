@@ -1,5 +1,5 @@
 =======================
-V5 Brain Display (LVGL)
+V5 Brain 显示屏（LVGL）
 =======================
 
 Interacting with the touchscreen on the V5 Brain is made possible through `LVGL <https://littlevgl.com>`_.

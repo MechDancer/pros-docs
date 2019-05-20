@@ -1,5 +1,5 @@
 ==================
-ADI (3 Wire Ports)
+模拟数字接口（3 线端口）
 ==================
 
 .. note:: For a full list of functions for interacting with the ADI, see its
@@ -7,7 +7,7 @@ ADI (3 Wire Ports)
 
 .. contents:: :local:
 
-Analog Sensors
+模拟传感器
 ==============
 
 While computers, microcontrollers, and other devices that interface with
@@ -26,7 +26,7 @@ voltage signals) to 12 bit integers. As a result, the range of all
 analog sensors when used with the Cortex is 0 to 4095 (the range of a 12
 bit unsigned integer).
 
-Initialization
+初始化
 --------------
 
 As with all ADI sensors, the first step to using the sensor is to set the configuration
@@ -93,7 +93,7 @@ line trackers.
            sensor.calibrate();
          }
 
-Potentiometer
+电位计
 -------------
 
 Potentiometers measure angular position and can be used to determine the
@@ -152,7 +152,7 @@ Thus an example of use on a lift would look like:
            }
          }
 
-Line Tracker
+寻线器
 ------------
 
 VEX Line Trackers operate by measuring the amount of light reflected to
@@ -204,7 +204,7 @@ An example of Line Tracker use:
            }
          }
 
-Accelerometer
+加速度计
 -------------
 
 The VEX Accelerometer measures acceleration on the x, y, and z axes
@@ -264,10 +264,10 @@ Example accelerometer use:
            std::cout << "X: " << x_acc << "Y: " << y_acc << "Z: " z_acc;
          }
 
-Digital Sensors
+数字传感器
 ===============
 
-Initialization
+初始化
 --------------
 
 As with all ADI sensors, the first step to using the sensor is to set the configuration
@@ -344,7 +344,7 @@ always return a true or false (boolean) value.
            drive =  0;
          }
 
-Quad Encoder
+正交编码器
 ------------
 
 Quadrature encoders can measure the rotation of the attached axle on
@@ -438,7 +438,7 @@ And then used in the following manner:
            drive = 0;
          }
 
-Ultrasonic
+超声波传感器
 ----------
 
 Ultrasonic sensors are used in a manner that is very similar to encoders, given

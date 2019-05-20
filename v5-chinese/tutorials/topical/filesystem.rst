@@ -1,5 +1,5 @@
 ==========
-Filesystem
+文件系统
 ==========
 
 You can interact with files on the microSD card (you can **not** interact with files on the V5
@@ -28,7 +28,7 @@ in the following manner:
    // Should print "Example text" to the terminal
    fclose(usd_file_read); // always close files when you're done with them
 
-Serial
+串口
 ======
 
 It's also possible to interact with the serial communications (``stdin``, ``stdout``, etc.) through

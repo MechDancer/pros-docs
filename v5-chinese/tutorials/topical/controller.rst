@@ -1,5 +1,5 @@
 ==========
-Controller
+控制器
 ==========
 
 .. note:: For a full list of functions for interacting with the V5 Controller, see its
@@ -12,7 +12,7 @@ and the digital data comes from the buttons.
 The analog data is a value in the range of [-127,127], and digital data is either
 1 or 0 (pressed or unpressed, respectively).
 
-Analog Data
+模拟数据
 ===========
 
 Retrieve analog values from the V5 Controller in the following manner:
@@ -54,7 +54,7 @@ The controller returns a range of [-127,127] for analog data, which is why the
 `motor_move <../../api/c/motors.html#motor-move>`_ function is appropriate for easy
 use with the controllers.
 
-Digital Data
+数字数据
 ============
 
 Retrieve Digital Values from the V5 Controller in the following manner:

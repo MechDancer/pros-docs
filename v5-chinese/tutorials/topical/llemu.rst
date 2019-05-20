@@ -1,11 +1,11 @@
 ===========================
-LLEMU (Legacy LCD Emulator)
+LLEMU（传统 LCD 仿真器）
 ===========================
 
 .. note:: For a full list of functions for interacting with the LLEMU, see its
           `C API <../../api/c/llemu.html>`_ and `C++ API <../../api/cpp/llemu.html>`_.
 
-Initialization
+初始化
 ==============
 
 Initialization of the LLEMU is very simple, it's just a call to its initialization
@@ -35,7 +35,7 @@ Initialization is done as such:
            pros::lcd::initialize();
          }
 
-Writing to the LLEMU
+写入 LLEMU
 ====================
 
 Writing to the LLEMU is nearly identical to writing to the LCD with
@@ -72,7 +72,7 @@ print function, which is analogous to
            }
          }
 
-Using the Buttons
+使用按钮
 =================
 
 Using the buttons can be done in a similar method to

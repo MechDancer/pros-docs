@@ -1,5 +1,5 @@
 ============
-Multitasking
+多任务
 ============
 
 .. note:: For a full list of functions for interacting with Tasks, see its
@@ -41,7 +41,7 @@ The following list are some commonly made mistakes and guidelines for using Task
     - It was mentioned above, but it's important enough for a second mention: every tasks'
       loop should have a ``delay()`` statement.
 
-Task Management
+任务管理
 ===============
 
 Tasks in PROS are simple to create:
@@ -106,7 +106,7 @@ is primarily for debugging purposes and allows you (the human) to easily identif
 management. Task names may be up to 32 characters long, and you may pass NULL or an empty string into the function.
 In API2, `taskCreate <../../../cortex/api/index.html#taskCreate>`_ will automatically make the task name an empty string.
 
-Synchronization
+同步
 ===============
 
 One problem which one often runs into when dealing with tasks is the
@@ -143,7 +143,7 @@ controller on its own task and you wanted to change the target of the
 PID controller. PROS features two types of synchronization structures,
 *mutexes* and *notifications* that can be used to coordinate tasks.
 
-Mutexes
+互斥
 -------
 
 Mutexes stand for mutual exclusion; only one task can hold a mutex at any given
@@ -184,7 +184,7 @@ Mutexes do not magically prevent concurrent writing, but provide the ability for
 create "contracts" with each other. You can write your code such that a variable is never
 written to unless the task owns a mutex designated for that variable.
 
-Notifications
+通知
 -------------
 
 Task notifications are a powerful new feature in PROS 3 which allows direct-to-task

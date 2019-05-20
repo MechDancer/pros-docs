@@ -1,11 +1,11 @@
 ======
-Motors
+电机
 ======
 
 .. note:: For a full list of functions for interacting with the V5 Motors, see its
           `C API <../../api/c/motors.html>`_ and `C++ API <../../api/cpp/motors.html>`_.
 
-Initialization
+初始化
 ==============
 
 V5 Motors should be configured before use in your code. Configuration options like
@@ -55,7 +55,7 @@ An example of this is given below.
            // drive_left will have the same configuration as drive_left_initializer
          }
 
-Simple Usage
+简单使用
 ============
 
 The easiest way to interact with the motors is through the `motor_move <../../api/c/motors.html#motor-move>`_
@@ -192,7 +192,7 @@ This ensures consistent velocity output from the motor through the use of
            pros::delay(1000); // Move at full speed for 1 second
          }
 
-Telemetry
+遥测
 =========
 
 The V5 motors return a plethora of diagnostic information about their performance.
