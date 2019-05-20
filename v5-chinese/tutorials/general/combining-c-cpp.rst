@@ -17,4 +17,4 @@ PROS C 和 C++ API 覆盖了完全相同的特性集，这意味着\
 ``using`` 关键字。
 
 有关 C 和 C++ 代码与你编写的代码混合的指南，请参阅
-`this tutorial <https://isocpp.org/wiki/faq/mixing-c-and-cpp>`_.
+`这篇教程 <https://isocpp.org/wiki/faq/mixing-c-and-cpp>`_。

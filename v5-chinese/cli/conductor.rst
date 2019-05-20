@@ -1,40 +1,40 @@
 ====================
-Conductor User Guide
+Conductor 使用说明
 ====================
 
-Introduction
+介绍
 ============
 
-Conductor is PROS's templating and project management facility. It is
-responsible for resolving versions of the PROS kernel and user libraries. It
-also provides information about a PROS project to other PROS facilities, like
-providing the target platform (e.g. V5 or Cortex) to the upload utility.
+Conductor 是 PROS 的模板和工程管理工具。\
+它负责解析 PROS 内核和用户库的版本，\
+还向其他 PROS 工具提供项目的信息。例如，\
+向上传工具提供目标平台（像是 V5 或者 Cortex）。
 
-There are a few concepts central to Conductor's functionality:
+这有 Conductor 功能的几个核心概念：
 
-- Templates: Templates are a description of a set of files. They have a name,
-  version, supported target, and possibly other metadata. Templates typically
-  come in one of 3 forms: remote, local, and installed. A remote template is
-  a template that can be downloaded. A local template is a downloaded template
-  that can be installed to a project, even when you're offline. An installed
-  template is a template which has been copied into a PROS project.
+- 模板：模板是对一组文件的描述。他们有名字、\
+  版本号、支持目标平台，以及可能有的其他元数据。模板通常有三种形式：\
+  远程、本地、已安装。\
+  远程模板是可以下载的模板；本地模板是下载好，\
+  可以安装到项目中的模板，即便在脱机的时候；\
+  已安装的模板是已经拷贝至项目的。
 
-- Depots: A depot is a connector to a remote template storage. Conductor doesn't
-  require any particular access method to these remote templates, but they are
-  typically available from a download link via HTTP. It is possible to implement
-  an SCP, FTP, or other sorts of file transfer depots. The default depot is
-  called pros-mainline and is the official repository of templates.
+- 仓库：仓库是到远程模板储存的连接器。Conductor
+  不需要任何特定的方法来访问远程模板，但他们\
+  通常可以从 HTTP 下载链接获得。也可是实现
+  SCP、FTP，或其他类型的文件传输仓库。默认的仓库被称作
+  pros-mainline，是官方的模板仓库。
 
-- Projects: A project is a set of user files and template files. They don't
-  contain much information on their own - just a target platform and a list of
-  installed templates. PROS Conductor maintains two lists of files originating
-  from templates: user files and system files. User files are never replaced
-  when upgrading a project and system files are always replaced when upgrading a
-  project.
+- 项目： 项目是一组用户文件和模板文件。它们本身\
+  并不包含太多信息——只是包含目标平台和\
+  一个已安装模板的列表。PROS Conductor 维护这两个来源模板的文件列表：\
+  用户文件和系统文件。升级项目时用户文件不会被替换，\
+  并且每次替换的是系统\
+  文件。
 
-Common Tasks
+常见任务
 ============
-Creating a new project
+创建新项目
 
 .. tabs::
 	.. tab :: Terminal
@@ -65,7 +65,7 @@ Creating a new project
 
 		Coming soon!
 
-Installing/upgrading a new template
+安装/升级新模板
 
 .. tabs::
 	.. tab :: Terminal
@@ -75,7 +75,7 @@ Installing/upgrading a new template
 			> pros conduct apply okapilib
 
 
-Fetching a remote template
+获取远程模板
 
 .. tabs::
 	.. tab :: Terminal
@@ -84,7 +84,7 @@ Fetching a remote template
 
 			> pros conduct fetch kernel 3.1.0
 
-Fetching a local template archive
+获取本地模板存档
 
 .. tabs::
 	.. tab :: Terminal
@@ -93,24 +93,24 @@ Fetching a local template archive
 
 			> pros conduct fetch mylibrary@1.0.0.zip
 
-Creating Templates
+创建模板
 ==================
 
-A template is a description of a set of files. All PROS
-projects are readily capable of creating a template. Change the following
-section in your project's Makefile. Then, to compile and create the template,
-run ``pros make template``.
+模板：模板是对一组文件的描述。所有 PROS
+项目都很容易创建模板。在项目的\
+Makefile 中更改以下部分，之后运行 ``pros make template``
+创建模板。
 
-You should:
+你应该：
 
-- Change ``IS_LIBRARY:=0`` to ``IS_LIBRARY:=1``
-- Change ``LIBNAME`` to a name for your library.
-- Change ``VERSION`` to a version for your library.
+- 将 ``IS_LIBRARY:=0`` 改为 ``IS_LIBRARY:=1``
+- 将 ``LIBNAME`` 改为你的库的名字
+- 将 ``VERSION`` 改为你的库的版本
 
-The default behavior of ``pros make template`` is to compile/package all source
-files in your project, except for those listed in ``EXCLUDE_SRC_FROM_LIB``.
-Additionally, any header files which you have created will be bundled. More
-concisely, any header files which weren't added by a template are included.
+``pros make template`` 的默认行为是编译/打包\
+项目中所有的源码，除了列在 ``EXCLUDE_SRC_FROM_LIB`` 中的。\
+此外，你创建的每个头文件都将捆绑在一起。更确切地说，
+任何没有被模板添加的头文件都包括在内。
 
 .. highlight:: Makefile
 
@@ -129,10 +129,10 @@ concisely, any header files which weren't added by a template are included.
 	# that are in the the include directory get exported
 	TEMPLATE_FILES=$(INCDIR)/**/*.h $(INCDIR)/**/*.hpp
 
-For advanced usage of creating templates, you can modify the ``Makefile`` with
-your own custom arguments to ``pros conduct create-template``
+对于创建模板的高级用法，你可以用自定义参数修改 ``Makefile``，\
+然后运行 ``pros conduct create-template``。
 
-Reference
+参考
 =========
 .. click:: pros.cli.conductor:conductor
 	:prog: pros conduct

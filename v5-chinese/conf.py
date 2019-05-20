@@ -16,9 +16,9 @@
 
 # -- Project information -----------------------------------------------------
 
-project = u'PROS for V5'
-copyright = u'2019, Purdue ACM SIGBots. Released under the MPL 2.0 license'
-author = u'Purdue ACM SIGBots'
+project = u'PROS for V5（中文）'
+copyright = u'2019 Purdue ACM SIGBots 根据 MPL 2.0 许可发布，MechDancer 译。'
+author = u'Purdue ACM SIGBots, MechDancer'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -60,9 +60,9 @@ import sphinx_rtd_theme
 html_theme = 'sphinx_rtd_theme'
 html_context = {
     'display_github': True,
-    'github_user': 'purduesigbots',
+    'github_user': 'MechDancer',
     'github_repo': 'pros-docs',
-    'github_version': 'master/v5/'
+    'github_version': 'master/v5-chinese/'
 }
 html_theme_options = {
     'analytics_id': 'UA-84548828-3',

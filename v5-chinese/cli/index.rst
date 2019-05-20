@@ -2,9 +2,9 @@
 CLI
 ===
 
-During the PROS 3 beta phase, the CLI is available by running the command `prosv5`. Once we fully release
-PROS CLI 3, we will rename it to the traditional `pros` command. We've done this so that you can continue
-to use the PROS 2 with the Cortex while we backport the VEX Cortex functionality.
+在 PROS 3 beta 阶段，可以通过运行命令 `prosv5` 来使用 CLI。当我们完全发布 PROS CLI 3 的时候，\
+我们会将其重命名为传统 `pros` 命令。我们这样做是为了让你能继续\
+在 Cortex 上使用 PROS 2，同时我们会支持 VEX Cortex 功能。
 
 .. toctree ::
    :titlesonly:

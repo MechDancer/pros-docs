@@ -57,7 +57,7 @@ PROS：文档主页
 .. toctree::
    :hidden:
    :maxdepth: -1
-   :caption: Extended (Advanced Users)
+   :caption: 扩展（高级用户）
 
    ./extended/index
 
@@ -67,7 +67,7 @@ PROS：文档主页
 
 :doc:`/getting-started/index`
 
-关于从 :doc:`tutorials/topical/adi` 到 :doc:`tutorials/walkthrough/uploading` 的所有主题教程，\
+关于从 :doc:`tutorials/topical/adi` 到 :doc:`tutorials/walkthrough/creating-c-project` 的所有主题教程，\
 参见 **教程** 一节：
 
 :doc:`/tutorials/index`
