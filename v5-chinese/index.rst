@@ -61,7 +61,7 @@ PROS：文档主页
 
    ./extended/index
 
-欢迎浏览 PROS 文档!
+欢迎浏览 PROS 文档！
 
 如果这是您第一次使用 PROS，建议您先浏览下列 **入门** 教程之一：
 
@@ -85,3 +85,15 @@ PROS：文档主页
 有关这些特性的教程可以在 **扩展** 部分找到：
 
 :doc:`./extended/index`
+
+===========
+感谢译者
+===========
+来自 `MechDancer <https://mechdancer.org>`_ 组织：
+
+-   `YdrMaster <https://https://github.com/YdrMaster>`_
+-   `berberman <https://github.com/berberman>`_
+
+.. image:: https://i.creativecommons.org/l/by-nc/4.0/88x31.png
+
+本作品采用 `知识共享署名-非商业性使用 4.0 国际许可协议 <http://creativecommons.org/licenses/by-nc/4.0/>`_  进行许可。
