@@ -1,9 +1,9 @@
 ===========================
-OkapiLib Documentation Home
+OkapiLib 文档主页
 ===========================
 
 .. toctree::
-   :caption: Content
+   :caption: 内容
    :glob:
    :hidden:
    :maxdepth: 1

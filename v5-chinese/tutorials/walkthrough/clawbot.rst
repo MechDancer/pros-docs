@@ -10,7 +10,7 @@
 本教程将指导您完成 VEX 爪爪机器人\
 的基本编程。
 
-Intended Audience
+目标受众
 =================
 
 本教程面向有一些编程经验，但对 PROS 库陌生的开发者。\
@@ -26,8 +26,8 @@ Intended Audience
 在本教程结束时，你将获得：
 
 -  理解 PROS 基本项目结构
--  会使用“坦克”控制或“arcade”控制对基本底盘进行编程
--  编好的用于控制爪爪机器人升降的按钮
+-  会使用“坦克”或“街机”控制对基本底盘进行编程
+-  编好的用于控制爪爪机器人机械臂升降的按钮
 -  编好的用于控制爪爪的摇杆
 -  理解标准子系统模块方法
 -  编好的航位推算（dead-reckoned）自动例程
@@ -87,62 +87,62 @@ ADI:
 创建项目
 ====================
 
-With Atom started, you can create a new PROS project by clicking the
-``PROS`` menu, then click ``Create new Project``.
+在 Atom 启动后，你可以点击 ``PROS`` 菜单，点击 ``Create new Project``
+创建新的 PROS 项目。
 
-Create a directory that you'd like to keep the source files for your
-Clawbot project.
+创建一个目录，用于保存爪爪机器人项目的\
+源文件。
 
-Pick a directory to create the new project in and click Create. The PROS
-CLI will now copy the latest kernel template into the specified
-directory and Atom will open it.
+选择要在其中创建新项目的目录，然后点击创建。\
+PROS CLI 会把最新的内核模板复制到制定的目录中，\
+然后 Atom 会打开它。
 
 PROS 项目结构
 ======================
 
-When you create your project, PROS will copy all of the files necessary
-to build your project. The structure of the project looks like:
+创建项目时，PROS 将复制构建项目所需的所有文件。\
+项目的结构如下：
 
 .. highlight:: none
 
 ::
 
   project
-  │   project.pros        (used by PROS CLI to know kernel version and other metadata)
-  │   Makefile            (instructs make how to compile your project)
-  |   common.mk           (helper file for Makefile)
+  │   project.pros        （PROS CLI 从这得知内核版本和其他元数据）
+  │   Makefile            （告诉 make 如何编译这个工程）
+  |   common.mk           （Makefile 的帮助文件）
   │
-  └───src                 (source files should go here)
-  │   │   autonomous.cpp  (source for autonomous function)
-  │   │   initialize.cpp  (source for initialization)
-  │   │   opcontrol.cpp   (source for operator control)
+  └───src                 （源文件应该放在这里）
+  │   │   autonomous.cpp  （自动部分源码）
+  │   │   initialize.cpp  （初始化部分源码）
+  │   │   opcontrol.cpp   （遥控部分源码）
   |
-  └───include             (Header files should go in here)
-  │   │   api.h           (Lets source files know PROS API functions)
-  │   │   main.h          (Includes api.h and anything else you want to include project-wide)
-  |   └───pros            (Contains all of the specific header files for the PROS API functions)
-  |   └───okapi           (Contains all of the header files for OkapiLib)
-  |   └───display         (Contains all of the header files for LVGL, the graphics library for the V5 screen)
+  └───include             （头文件应该放在这里）
+  │   │   api.h           （让源码知道 PROS API 函数）
+  │   │   main.h          （`包括` api.h 和你希望在项目范围内 `包括` 的任何其他内容）
+  |   └───pros            （包含所有特定 PROS API 的头文件）
+  |   └───okapi           （包含所有 OkapiLib 的头文件）
+  |   └───display         （包含 V5 屏幕图形库 LVGL 的头文件）
   │
   └───firmware 
-      │   libpros.a       (Pre-compiled PROS library)
-      │   okapilib.a      (Pre-compiled OkapiLib library)
-      |   v5.ld           (Instructs the linker how to construct binaries for the V5)
+      │   libpros.a       （编译好的 PROS 库）
+      │   okapilib.a      （编译好的 OkapiLib）
+      |   v5.ld           （告诉链接器如何为 V5 构造二进制文件）
 
 
 .. note::
-   By convention, the ``opcontrol()``, ``autonomous()``, and initialize functions are separated into separate 
-   files (opcontrol.cpp, autonomous.cpp, and initialize.cpp). They could be all in the same file, but it can be helpful to 
-   organize your functions into multiple files to keep things from becoming messy.
+   按照惯例，``opcontrol()``、``autonomous()``，和初始化函数被分为单独的文件\
+   （opcontrol.cpp、autonomous.cpp、initialize.cpp）。他们可以在同一个文件中,\ 
+   但把函数组织到多个文件中对防止事情变得混乱很有帮助。
 
 遥控 
 =============
 
-Let's start with the simplest operator control setup for the clawbot - tank drive control. We'll map
-the controller's left joystick to the left drive motor and the controller's right joystick 
-to the right drive motor.
+让我们从最简单的爪爪机器人遥控——坦克驾驶控制开始。我们将会\
+把左摇杆映射到左侧驱动电机，\
+右摇杆映射到右侧驱动电机。
 
-The controller joystick can be read with the following function:
+手柄的摇杆可以通过以下函数读值：
 
 .. tabs ::
 
@@ -159,7 +159,7 @@ The controller joystick can be read with the following function:
        int32_t controller_get_analog ( controller_id_e_t id,
                                         controller_analog_e_t channel )
 
-And we'll set the motors with the following function:
+然后我们通过以下函数设置电机：
 
 .. tabs ::
 
@@ -176,13 +176,13 @@ And we'll set the motors with the following function:
        int32_t motor_move ( uint8_t port,
                               const int8_t voltage )
                             
-Before we get started with the tank drive control, it's important to note that in C++, smart devices have
-`constructors` that create the smart device object. Constructors are a standard C++ concept, and they're
-very important because a constructor is necessary to define a `class` for objects like the motors and 
-controllers. 
+在我们开始使用坦克驾驶控制之前，有一点需要注意。在 C++ 中，智能设备具有创建智能设备对象的 `构造函数`。\
+构造函数是一个标准的 C++ 概念，\
+它们非常重要，因为构造函数是为定义像电机或手柄这样对象的 `类` 
+所必须的。
 
-We'll be calling the constructors for the motors and controller at the beginning of ``opcontrol()``, 
-and then we'll run the tank drive code.
+我们先在 ``opcontrol()`` 开始时调用电机和手柄的构造器，\
+然后运行坦克驾驶控制代码。
 
 .. tabs ::
 
@@ -229,25 +229,25 @@ and then we'll run the tank drive code.
            }
          }
 
-To test this code, run the following commands in the terminal window to create, build, and upload the code.
+要测试此代码，请在终端窗口中运行以下命令来创建、构建和上传。
 
 .. code :: bash
 
     prosv5 make
     prosv5 upload
 
-These 2 commands can be simplified to ```prosv5 mu``.
+这两个命令可以简化为 ``prosv5 mu``。
 
-Arcade 控制
+街机控制
 ==============
 
-While tank drive control is perfectly suitable for the driving style of some individuals, it is worth
-covering the arcade control method as well. This is similar to the movement style of many video games,
-where one joystick axis covers forward/backward movement and the other joystick covers turning.
+虽然坦克驾驶控制非常适合一些人的驾驶风格，\
+但也值得介绍街机控制方法。这类似于许多视频游戏的运动风格，\
+其中一个摇杆轴覆盖向前/向后运动，另一个轴覆盖转动。
 
-We will take the previous tank drive control code and modify it slightly to become arcade control. 
-The sum or difference of the power and turn joysticks will be the power values sent to the left and right 
-wheels. 
+我们将采用以前的坦克驾驶控制代码，并稍微修改它，\
+成为街机控制。摇杆的两轴值会经过求和或者作差作为左右两轮的功率。
+   .. note:: 译者注：原文最后句说的不明白，换了一种更直观的表达方式。
 
 .. tabs ::
 
@@ -301,15 +301,15 @@ wheels.
          }
 
 
-As with the tank drive code, this can be uploaded with the ``prosv5 mu`` command.
+与坦克驾驶代码一样，这可以通过 ``prosv5 mu`` 命令上传。
 
 机械臂控制
 ===========
 
-Next let's control the clawbot's arm. This will not require the use of a joystick, but instead 
-we will use the controller's buttons. 
+接下来让我们控制爪爪机器人的机械臂。这不需要用摇杆，\
+而是使用手柄的按钮。
 
-We will use the following function to read the button press from the controller:
+我们通过以下函数读按钮的值：
 
 .. tabs ::
 
@@ -326,9 +326,9 @@ We will use the following function to read the button press from the controller:
        int32_t controller_get_digital ( controller_id_e_t id,
                                         controller_digital_e_t button )
 
-We will use a different motor movement function than on the drivetrain. By using the velocity-controlled 
-movement functions, we can ensure that the lift moves at a constant speed regardless of the weight that 
-the lift is holding.
+我们将使用不同于传动系统（drive train）的电机运动函数。通过使用速度控制，
+运动函数，我们可以确保升降以恒定速度移动\
+而不需要考虑它承载的重量。
 
 .. tabs ::
 
@@ -345,8 +345,8 @@ the lift is holding.
         int32_t motor_move_velocity ( uint8_t port, 
                                       const int32_t velocity )
 
-To actuate the lift, we will check if the upmost right trigger is pressed or if the bottommost right trigger
-is pressed on the controller, and move the lift in that direction if so.
+要运动升降机械臂，我们检查最手柄右侧或左侧的扳机是否按下，\
+如果是，就按照对应方向移动机械臂。
 
 .. tabs ::
 
@@ -363,7 +363,7 @@ is pressed on the controller, and move the lift in that direction if so.
          void opcontrol() {
            pros::Motor left_wheels (LEFT_WHEELS_PORT);
            pros::Motor right_wheels (RIGHT_WHEELS_PORT, true);
-           pros::Motor arm (ARM_PORT, MOTOR_GEARSET_36); // The arm motor has the 100rpm (red) gearset
+           pros::Motor arm (ARM_PORT, MOTOR_GEARSET_36); // 机械臂电机使用 100rpm（红色）齿轮箱
            pros::Controller master (CONTROLLER_MASTER);
 
            while (true) {
@@ -375,7 +375,7 @@ is pressed on the controller, and move the lift in that direction if so.
              right_wheels.move(right);
 
              if (master.get_digital(DIGITAL_R1)) {
-               arm.move_velocity(100); // This is 100 because it's a 100rpm motor
+               arm.move_velocity(100); // 因为是 100rpm 的电机，所以这是 100。
              }
              else if (master.get_digital(DIGITAL_R2)) {
                arm.move_velocity(-100);
@@ -399,7 +399,7 @@ is pressed on the controller, and move the lift in that direction if so.
          #define ARM_PORT 8
 
          void opcontrol() {
-           motor_set_gearing(ARM_PORT, MOTOR_GEARSET_36); // Establish that there is a 100rpm (red) gearset in the arm motor
+           motor_set_gearing(ARM_PORT, MOTOR_GEARSET_36); // 机械臂电机使用 100rpm（红色）齿轮箱
            while (true) {
              int power = controller_get_analog(CONTROLLER_MASTER, ANALOG_LEFT_Y);
              int turn = controller_get_analog(CONTROLLER_MASTER, ANALOG_RIGHT_X);
@@ -410,7 +410,7 @@ is pressed on the controller, and move the lift in that direction if so.
              motor_move(RIGHT_WHEELS_PORT, right);
 
              if (master.get_digital(DIGITAL_R1)) {
-               motor_move_velocity(ARM_PORT, 100); // This is 100 because it's a 100rpm motor
+               motor_move_velocity(ARM_PORT, 100); // 因为是 100rpm 的电机，所以这是 100。
              }
              else if (master.get_digital(DIGITAL_R2)) {
                motor_move_velocity(ARM_PORT, -100);
@@ -426,7 +426,7 @@ is pressed on the controller, and move the lift in that direction if so.
 爪爪控制
 ============
 
-We will control the claw in the same manner as the lift, by toggling its movement with a controller button.
+我们将以升降机械臂相同的方式控制爪爪，通过一个手柄上的按钮切换它的运动。
 
 .. tabs ::
 
@@ -444,7 +444,7 @@ We will control the claw in the same manner as the lift, by toggling its movemen
          void opcontrol() {
            pros::Motor left_wheels (LEFT_WHEELS_PORT);
            pros::Motor right_wheels (RIGHT_WHEELS_PORT, true);
-           pros::Motor arm (ARM_PORT, MOTOR_GEARSET_36); // The arm motor has the 100rpm (red) gearset
+           pros::Motor arm (ARM_PORT, MOTOR_GEARSET_36); // 机械臂电机使用 100rpm（红色）齿轮箱
            pros::Motor claw (CLAW_PORT, MOTOR_GEARSET_36);
            pros::Controller master (CONTROLLER_MASTER);
 
@@ -457,7 +457,7 @@ We will control the claw in the same manner as the lift, by toggling its movemen
              right_wheels.move(right);
 
              if (master.get_digital(DIGITAL_R1)) {
-               arm.move_velocity(100); // This is 100 because it's a 100rpm motor
+               arm.move_velocity(100); // 因为是 100rpm 的电机，所以这是 100。
              }
              else if (master.get_digital(DIGITAL_R2)) {
                arm.move_velocity(-100);
@@ -492,7 +492,7 @@ We will control the claw in the same manner as the lift, by toggling its movemen
          #define CLAW_PORT 3
 
          void opcontrol() {
-           motor_set_gearing(ARM_PORT, MOTOR_GEARSET_36); // Establish that there is a 100rpm (red) gearset in the arm motor
+           motor_set_gearing(ARM_PORT, MOTOR_GEARSET_36); // 机械臂电机使用 100rpm（红色）齿轮箱
            motor_set_gearing(CLAW_PORT, MOTOR_GEARSET_36);
            while (true) {
              int power = controller_get_analog(CONTROLLER_MASTER, ANALOG_LEFT_Y);
@@ -504,7 +504,7 @@ We will control the claw in the same manner as the lift, by toggling its movemen
              motor_move(RIGHT_WHEELS_PORT, right);
 
              if (master.get_digital(DIGITAL_R1)) {
-               motor_move_velocity(ARM_PORT, 100); // This is 100 because it's a 100rpm motor
+               motor_move_velocity(ARM_PORT, 100); // 因为是 100rpm 的电机，所以这是 100。
              }
              else if (master.get_digital(DIGITAL_R2)) {
                motor_move_velocity(ARM_PORT, -100);
@@ -514,7 +514,7 @@ We will control the claw in the same manner as the lift, by toggling its movemen
              }
 
              if (master.get_digital(DIGITAL_R1)) {
-               motor_move_velocity(CLAW_PORT, 100); // This is 100 because it's a 100rpm motor
+               motor_move_velocity(CLAW_PORT, 100); // 因为是 100rpm 的电机，所以这是 100。
              }
              else if (master.get_digital(DIGITAL_R2)) {
                motor_move_velocity(CLAW_PORT, -100);
@@ -530,11 +530,11 @@ We will control the claw in the same manner as the lift, by toggling its movemen
 读取开关
 ====================
 
-The bump switches, or buttons, are plugged into the ADI and attached to the rear of the robot. We'll 
-monitor the status of the bump switches, and prevent the robot from driving backwards if the switches are 
-pressed.
+保险杠开关/按钮插入了 ADI 并装在了机器人的后部。\
+我们会监控它的状态，如果它被按下了，\ 
+则禁止机器人向后运动。
 
-We will be using the digital reading functionality of the ADI for this.
+为此，我们将使用 ADI 数字信号读取功能。
 
 .. tabs ::
 
@@ -550,7 +550,7 @@ We will be using the digital reading functionality of the ADI for this.
         
         int32_t adi_get_value (uint8_t port )
 
-And here is the updated code:
+下面是更新后的代码：
 
 .. tabs ::
 
@@ -571,7 +571,7 @@ And here is the updated code:
          void opcontrol() {
            pros::Motor left_wheels (LEFT_WHEELS_PORT);
            pros::Motor right_wheels (RIGHT_WHEELS_PORT, true);
-           pros::Motor arm (ARM_PORT, MOTOR_GEARSET_36); // The arm motor has the 100rpm (red) gearset
+           pros::Motor arm (ARM_PORT, MOTOR_GEARSET_36); // 机械臂电机使用 100rpm（红色）齿轮箱
            pros::Motor claw (CLAW_PORT, MOTOR_GEARSET_36);
 
            pros::ADIDigitalIn left_bumper (LEFT_BUMPER_PORT);
@@ -598,7 +598,7 @@ And here is the updated code:
              right_wheels.move(right);
 
              if (master.get_digital(DIGITAL_R1)) {
-               arm.move_velocity(100); // This is 100 because it's a 100rpm motor
+               arm.move_velocity(100); // 因为是 100rpm 的电机，所以这是 100。
              }
              else if (master.get_digital(DIGITAL_R2)) {
                arm.move_velocity(-100);
@@ -636,7 +636,7 @@ And here is the updated code:
          #define RIGHT_BUMPER_PORT 'b'
 
          void opcontrol() {
-           motor_set_gearing(ARM_PORT, MOTOR_GEARSET_36); // Establish that there is a 100rpm (red) gearset in the arm motor
+           motor_set_gearing(ARM_PORT, MOTOR_GEARSET_36); // 机械臂电机使用 100rpm（红色）齿轮箱
            motor_set_gearing(CLAW_PORT, MOTOR_GEARSET_36);
 
            adi_port_set_config(LEFT_BUMPER_PORT, ADI_DIGITAL_IN);
@@ -661,7 +661,7 @@ And here is the updated code:
              motor_move(RIGHT_WHEELS_PORT, right);
 
              if (master.get_digital(DIGITAL_R1)) {
-               motor_move_velocity(ARM_PORT, 100); // This is 100 because it's a 100rpm motor
+               motor_move_velocity(ARM_PORT, 100); // 因为是 100rpm 的电机，所以这是 100。
              }
              else if (master.get_digital(DIGITAL_R2)) {
                motor_move_velocity(ARM_PORT, -100);
@@ -671,7 +671,7 @@ And here is the updated code:
              }
 
              if (master.get_digital(DIGITAL_R1)) {
-               motor_move_velocity(CLAW_PORT, 100); // This is 100 because it's a 100rpm motor
+               motor_move_velocity(CLAW_PORT, 100); // 因为是 100rpm 的电机，所以这是 100。
              }
              else if (master.get_digital(DIGITAL_R2)) {
                motor_move_velocity(CLAW_PORT, -100);
@@ -684,8 +684,8 @@ And here is the updated code:
            }
          }
 
-We will use a similar technique for reading the limit switch. If the limit switch is pressed, then 
-we will prevent the lift from being driven down further.
+我们将使用类似的技术读取限位开关。如果按下限位开关，\
+则阻止机械臂进一步下降。
 
 .. tabs ::
 
@@ -707,7 +707,7 @@ we will prevent the lift from being driven down further.
          void opcontrol() {
            pros::Motor left_wheels (LEFT_WHEELS_PORT);
            pros::Motor right_wheels (RIGHT_WHEELS_PORT, true);
-           pros::Motor arm (ARM_PORT, MOTOR_GEARSET_36); // The arm motor has the 100rpm (red) gearset
+           pros::Motor arm (ARM_PORT, MOTOR_GEARSET_36); // 机械臂电机使用 100rpm（红色）齿轮箱
            pros::Motor claw (CLAW_PORT, MOTOR_GEARSET_36);
 
            pros::ADIDigitalIn left_bumper (LEFT_BUMPER_PORT);
@@ -735,7 +735,7 @@ we will prevent the lift from being driven down further.
              right_wheels.move(right);
 
              if (master.get_digital(DIGITAL_R1)) {
-               arm.move_velocity(100); // This is 100 because it's a 100rpm motor
+               arm.move_velocity(100); // 因为是 100rpm 的电机，所以这是 100。
              }
              else if (master.get_digital(DIGITAL_R2) && !arm_limit.get_value()) {
                arm.move_velocity(-100);
@@ -774,7 +774,7 @@ we will prevent the lift from being driven down further.
          #define ARM_LIMIT_SWITCH_PORT 'h'
 
          void opcontrol() {
-           motor_set_gearing(ARM_PORT, GEARSET_36); // Establish that there is a 100rpm (red) gearset in the arm motor
+           motor_set_gearing(ARM_PORT, GEARSET_36); // 机械臂电机使用 100rpm（红色）齿轮箱
            motor_set_gearing(CLAW_PORT, GEARSET_36);
 
            adi_port_set_config(LEFT_BUMPER_PORT, ADI_DIGITAL_IN);
@@ -800,7 +800,7 @@ we will prevent the lift from being driven down further.
              motor_move(RIGHT_WHEELS_PORT, right);
 
              if (master.get_digital(CONTROLLER_DIGITAL_R1)) {
-               motor_move_velocity(ARM_PORT, 100); // This is 100 because it's a 100rpm motor
+               motor_move_velocity(ARM_PORT, 100); // 因为是 100rpm 的电机，所以这是 100。
              }
              else if (master.get_digital(CONTROLLER_DIGITAL_R2) && !adi_port_get_value(ARM_LIMIT_SWITCH_PORT)) {
                motor_move_velocity(ARM_PORT, -100);
@@ -810,7 +810,7 @@ we will prevent the lift from being driven down further.
              }
 
              if (master.get_digital(CONTROLLER_DIGITAL_R1)) {
-               motor_move_velocity(CLAW_PORT, 100); // This is 100 because it's a 100rpm motor
+               motor_move_velocity(CLAW_PORT, 100); // 因为是 100rpm 的电机，所以这是 100。
              }
              else if (master.get_digital(CONTROLLER_DIGITAL_R2)) {
                motor_move_velocity(CLAW_PORT, -100);
@@ -826,7 +826,7 @@ we will prevent the lift from being driven down further.
 简单自动
 =================
 
-The autonomous program runs without the use of a controller. We will make a simple autonomous program that drives straight.
+自动程序运行时不使用手柄。我们将写一个简单的向前直走自动程序。
 
 .. tabs ::
 
@@ -838,7 +838,7 @@ The autonomous program runs without the use of a controller. We will make a simp
 
          #define LEFT_WHEELS_PORT 1
          #define RIGHT_WHEELS_PORT 10
-         #define MOTOR_MAX_SPEED 100 // The motor has the 36 Gearset
+         #define MOTOR_MAX_SPEED 100 // 电机使用 36 号齿轮箱
 
          void autonomous() {
            pros::Motor left_wheels (LEFT_WHEELS_PORT);
@@ -856,7 +856,7 @@ The autonomous program runs without the use of a controller. We will make a simp
 
          #define LEFT_WHEELS_PORT 1
          #define RIGHT_WHEELS_PORT 10
-         #define MOTOR_MAX_SPEED 100 // The motor has the 36 Gearset
+         #define MOTOR_MAX_SPEED 100 // 电机使用 36 号齿轮箱
 
          void autonomous() {
            motor_move_relative(LEFT_WHEELS_PORT, 1000, MOTOR_MAX_SPEED);

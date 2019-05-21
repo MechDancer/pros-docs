@@ -1,5 +1,5 @@
 ======
-Editor
+编辑器
 ======
 
-More information coming soon!
+更多信息即将发布！

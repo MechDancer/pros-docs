@@ -1,5 +1,5 @@
 ==========
-控制器
+手柄
 ==========
 
 .. note:: For a full list of functions for interacting with the V5 Controller, see its

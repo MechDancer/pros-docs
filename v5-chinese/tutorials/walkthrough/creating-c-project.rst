@@ -1,5 +1,5 @@
 ====================
-Creating a C Project
+创建一个 C 项目
 ====================
 
 By default, a new PROS project contains C++ source files and the C++ API. If you would prefer to program in C
