@@ -119,7 +119,7 @@ PROS 项目结构
   |
   └───include             （头文件应该放在这里）
   │   │   api.h           （让源码知道 PROS API 函数）
-  │   │   main.h          （`包括` api.h 和你希望在项目范围内 `包括` 的任何其他内容）
+  │   │   main.h          （`包含` api.h 和你希望在项目范围内 `包含` 的任何其他内容）
   |   └───pros            （包含所有特定 PROS API 的头文件）
   |   └───okapi           （包含所有 OkapiLib 的头文件）
   |   └───display         （包含 V5 屏幕图形库 LVGL 的头文件）

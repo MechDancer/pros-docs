@@ -2,4 +2,4 @@
 JINX 图形调试器
 =======================
 
-.. warning:: This will be completed when JINX is finalized for an upcoming minor version increment.
+.. warning:: 这页将在 JINX 完成，到下一个小版本时定稿。

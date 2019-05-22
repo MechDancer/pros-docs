@@ -2,20 +2,20 @@
 手柄
 ==========
 
-.. note:: For a full list of functions for interacting with the V5 Controller, see its
-          `C API <../../api/c/misc.html>`_ and `C++ API <../../api/cpp/misc.html>`_.
+.. note:: 有关与 V5 手柄交互函数的完整列表，请见
+          `C API <../../api/c/misc.html>`_ and `C++ API <../../api/cpp/misc.html>`_。
 
-Feedback from the V5 Controller comes in two forms - analog and digital. The
-analog data comes from the `joysticks <https://en.wikipedia.org/wiki/Analog_stick>`_,
-and the digital data comes from the buttons.
+V5 手柄的反馈有两种形式——模拟和数字。\
+模拟数据来源于 `摇杆 <https://en.wikipedia.org/wiki/Analog_stick>`_，
+数字数据来源于按钮。
 
-The analog data is a value in the range of [-127,127], and digital data is either
-1 or 0 (pressed or unpressed, respectively).
+模拟数据是在 [-127，127] 范围内的值，数字数据是
+1 或者 0（分别是按下或未按下)。
 
 模拟数据
 ===========
 
-Retrieve analog values from the V5 Controller in the following manner:
+按照下列方式从 V5 手柄中获取模拟值：
 
 .. tabs::
    .. group-tab :: C
@@ -50,14 +50,14 @@ Retrieve analog values from the V5 Controller in the following manner:
            }
          }
 
-The controller returns a range of [-127,127] for analog data, which is why the
-`motor_move <../../api/c/motors.html#motor-move>`_ function is appropriate for easy
-use with the controllers.
+手柄返回 [-127,127] 范围内的模拟数据正好与
+`motor_move <../../api/c/motors.html#motor-move>`_ 函数相适，\
+这也是电机和手柄一起用很方便的原因。
 
 数字数据
 ============
 
-Retrieve Digital Values from the V5 Controller in the following manner:
+按照下列方式从 V5 手柄中获取数字值：
 
 .. tabs::
    .. group-tab :: C

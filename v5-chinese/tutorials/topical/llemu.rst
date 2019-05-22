@@ -2,17 +2,17 @@
 LLEMU（传统 LCD 仿真器）
 ===========================
 
-.. note:: For a full list of functions for interacting with the LLEMU, see its
-          `C API <../../api/c/llemu.html>`_ and `C++ API <../../api/cpp/llemu.html>`_.
+.. note:: 有关与 LLEMU 交互函数的完整列表，请见
+          `C API <../../api/c/llemu.html>`_ 和 `C++ API <../../api/cpp/llemu.html>`_。
 
 初始化
 ==============
 
-Initialization of the LLEMU is very simple, it's just a call to its initialization
-function at whatever point in the program you would like the LLEMU to start displaying
-(this will most likely be in ``initialize()``).
+初始化 LLEMU 非常简单，只要在 LLEMU 开始显示之前\
+调用他的初始化函数即可\
+（这很可能在 ``initialize()`` 中）。
 
-Initialization is done as such:
+初始化是这样完成的：
 
 .. tabs::
    .. group-tab:: C
@@ -38,10 +38,10 @@ Initialization is done as such:
 写入 LLEMU
 ====================
 
-Writing to the LLEMU is nearly identical to writing to the LCD with
-`PROS 2 <../../cortex/tutorials/lcd.html>`_. Most writing should be done with the
-print function, which is analogous to
-`printf <http://www.cplusplus.com/reference/cstdio/printf/>`_.
+写入 LLEMU 几乎等同于使用
+`PROS 2 <../../cortex/tutorials/lcd.html>`_ 写入 LCD。
+大多数写入应使用打印函数，类似于
+`printf <http://www.cplusplus.com/reference/cstdio/printf/>`_。
 
 .. tabs::
    .. group-tab:: C

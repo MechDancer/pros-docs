@@ -63,7 +63,7 @@ PROS：文档主页
 
 欢迎浏览 PROS 文档！
 
-如果这是您第一次使用 PROS，建议您先浏览下列 **入门** 教程之一：
+如果这是你第一次使用 PROS，建议你先浏览下列 **入门** 教程之一：
 
 :doc:`/getting-started/index`
 
@@ -76,7 +76,7 @@ PROS：文档主页
 
 :doc:`/api/index`
 
-我们有幸向您推荐 **OkapiLib** ，这是一个旨在在您的 PROS 项目中简化复杂功能的库。\
+我们有幸向你推荐 **OkapiLib** ，这个库旨在简化  PROS 项目 复杂功能。\
 有关 OkapiLib 的文档，请参阅其文档部分：
 
 :doc:`okapi/index`
