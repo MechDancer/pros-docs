@@ -75,16 +75,16 @@ LLEMU（传统 LCD 仿真器）
 使用按钮
 =================
 
-Using the buttons can be done in a similar method to
-`PROS 2 <../../../cortex/tutorials/lcd.html>`_ with the
-`pros::lcd::read_buttons <../../api/cpp/llemu.html#read-buttons>`_ function. See
-the above example for printing the button readings.
+使用按钮的方法与
+`PROS 2 <../../../cortex/tutorials/lcd.html>`_
+`pros::lcd::read_buttons <../../api/cpp/llemu.html#read-buttons>`_ 的类似。\
+参阅上面的示例打印按钮读数。
 
-While this is sufficient for most applications, some tasks are easier to perform
-using the `pros::lcd::register_btn#_cb <../../api/cpp/llemu.html#register-btn0-cb>`_ functions
-(where # is replaced with 0, 1, or 2 for the left, center, and right buttons respectively).
-With these function you can assign a function to be called each time that the button
-is pressed.
+虽然这对于大多数应用程序来说已经足够，但是使用
+`pros::lcd::register_btn#_cb <../../api/cpp/llemu.html#register-btn0-cb>`_ 函数\
+（# 分别替换为 0、1 或 2 对应左、中、右按钮）更容易执行一些任务。
+使用这些函数，\
+你可以分配每次按下按钮时调用的函数。
 
 .. tabs::
    .. group-tab:: C
@@ -130,4 +130,4 @@ is pressed.
          }
 
 
-.. note:: Custom LVGL code cannot be displayed at the same time as LLEMU.
+.. note:: 自定义 LVGL 代码不能与 LLEMU 同时显示。

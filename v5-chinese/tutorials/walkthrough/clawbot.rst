@@ -363,7 +363,7 @@ PROS 项目结构
          void opcontrol() {
            pros::Motor left_wheels (LEFT_WHEELS_PORT);
            pros::Motor right_wheels (RIGHT_WHEELS_PORT, true);
-           pros::Motor arm (ARM_PORT, MOTOR_GEARSET_36); // 机械臂电机使用 100rpm（红色）齿轮箱
+           pros::Motor arm (ARM_PORT, MOTOR_GEARSET_36); // 机械臂电机使用 100rpm（红色）齿轮组
            pros::Controller master (CONTROLLER_MASTER);
 
            while (true) {
@@ -399,7 +399,7 @@ PROS 项目结构
          #define ARM_PORT 8
 
          void opcontrol() {
-           motor_set_gearing(ARM_PORT, MOTOR_GEARSET_36); // 机械臂电机使用 100rpm（红色）齿轮箱
+           motor_set_gearing(ARM_PORT, MOTOR_GEARSET_36); // 机械臂电机使用 100rpm（红色）齿轮组
            while (true) {
              int power = controller_get_analog(CONTROLLER_MASTER, ANALOG_LEFT_Y);
              int turn = controller_get_analog(CONTROLLER_MASTER, ANALOG_RIGHT_X);
@@ -444,7 +444,7 @@ PROS 项目结构
          void opcontrol() {
            pros::Motor left_wheels (LEFT_WHEELS_PORT);
            pros::Motor right_wheels (RIGHT_WHEELS_PORT, true);
-           pros::Motor arm (ARM_PORT, MOTOR_GEARSET_36); // 机械臂电机使用 100rpm（红色）齿轮箱
+           pros::Motor arm (ARM_PORT, MOTOR_GEARSET_36); // 机械臂电机使用 100rpm（红色）齿轮组
            pros::Motor claw (CLAW_PORT, MOTOR_GEARSET_36);
            pros::Controller master (CONTROLLER_MASTER);
 
@@ -492,7 +492,7 @@ PROS 项目结构
          #define CLAW_PORT 3
 
          void opcontrol() {
-           motor_set_gearing(ARM_PORT, MOTOR_GEARSET_36); // 机械臂电机使用 100rpm（红色）齿轮箱
+           motor_set_gearing(ARM_PORT, MOTOR_GEARSET_36); // 机械臂电机使用 100rpm（红色）齿轮组
            motor_set_gearing(CLAW_PORT, MOTOR_GEARSET_36);
            while (true) {
              int power = controller_get_analog(CONTROLLER_MASTER, ANALOG_LEFT_Y);
@@ -571,7 +571,7 @@ PROS 项目结构
          void opcontrol() {
            pros::Motor left_wheels (LEFT_WHEELS_PORT);
            pros::Motor right_wheels (RIGHT_WHEELS_PORT, true);
-           pros::Motor arm (ARM_PORT, MOTOR_GEARSET_36); // 机械臂电机使用 100rpm（红色）齿轮箱
+           pros::Motor arm (ARM_PORT, MOTOR_GEARSET_36); // 机械臂电机使用 100rpm（红色）齿轮组
            pros::Motor claw (CLAW_PORT, MOTOR_GEARSET_36);
 
            pros::ADIDigitalIn left_bumper (LEFT_BUMPER_PORT);
@@ -636,7 +636,7 @@ PROS 项目结构
          #define RIGHT_BUMPER_PORT 'b'
 
          void opcontrol() {
-           motor_set_gearing(ARM_PORT, MOTOR_GEARSET_36); // 机械臂电机使用 100rpm（红色）齿轮箱
+           motor_set_gearing(ARM_PORT, MOTOR_GEARSET_36); // 机械臂电机使用 100rpm（红色）齿轮组
            motor_set_gearing(CLAW_PORT, MOTOR_GEARSET_36);
 
            adi_port_set_config(LEFT_BUMPER_PORT, ADI_DIGITAL_IN);
@@ -707,7 +707,7 @@ PROS 项目结构
          void opcontrol() {
            pros::Motor left_wheels (LEFT_WHEELS_PORT);
            pros::Motor right_wheels (RIGHT_WHEELS_PORT, true);
-           pros::Motor arm (ARM_PORT, MOTOR_GEARSET_36); // 机械臂电机使用 100rpm（红色）齿轮箱
+           pros::Motor arm (ARM_PORT, MOTOR_GEARSET_36); // 机械臂电机使用 100rpm（红色）齿轮组
            pros::Motor claw (CLAW_PORT, MOTOR_GEARSET_36);
 
            pros::ADIDigitalIn left_bumper (LEFT_BUMPER_PORT);
@@ -774,7 +774,7 @@ PROS 项目结构
          #define ARM_LIMIT_SWITCH_PORT 'h'
 
          void opcontrol() {
-           motor_set_gearing(ARM_PORT, GEARSET_36); // 机械臂电机使用 100rpm（红色）齿轮箱
+           motor_set_gearing(ARM_PORT, GEARSET_36); // 机械臂电机使用 100rpm（红色）齿轮组
            motor_set_gearing(CLAW_PORT, GEARSET_36);
 
            adi_port_set_config(LEFT_BUMPER_PORT, ADI_DIGITAL_IN);
@@ -838,7 +838,7 @@ PROS 项目结构
 
          #define LEFT_WHEELS_PORT 1
          #define RIGHT_WHEELS_PORT 10
-         #define MOTOR_MAX_SPEED 100 // 电机使用 36 号齿轮箱
+         #define MOTOR_MAX_SPEED 100 // 电机使用 36 号齿轮组
 
          void autonomous() {
            pros::Motor left_wheels (LEFT_WHEELS_PORT);
@@ -856,7 +856,7 @@ PROS 项目结构
 
          #define LEFT_WHEELS_PORT 1
          #define RIGHT_WHEELS_PORT 10
-         #define MOTOR_MAX_SPEED 100 // 电机使用 36 号齿轮箱
+         #define MOTOR_MAX_SPEED 100 // 电机使用 36 号齿轮组
 
          void autonomous() {
            motor_move_relative(LEFT_WHEELS_PORT, 1000, MOTOR_MAX_SPEED);

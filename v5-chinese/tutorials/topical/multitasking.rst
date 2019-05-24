@@ -2,49 +2,49 @@
 多任务
 ============
 
-.. note:: For a full list of functions for interacting with Tasks, see its
-          `C API <../../api/c/rtos.html>`_ and `C++ API <../../api/cpp/rtos.html>`_.
+.. note:: 有关与任务交互函数的完整列表，请见
+          `C API <../../api/c/rtos.html>`_ 和 `C++ API <../../api/cpp/rtos.html>`_.
 
-Tasks are a great tool to do multiple things at once, but they can be difficult
-to use properly. The most important thing to remember when using tasks is that tasks aren't
-truly running in the background - they are run one at a time and swapped out by the PROS
-scheduler. If your task performs some repeated action (e.g. a ``while`` loop), you should
-include a ``delay()`` or ``task_delay_until()``. Without a ``delay()`` statement, your task
-could starve the processor of resources and prevent the kernel from running properly.
+任务是同时做多个事情的好工具，但很去难正确使用。\
+使用任务时要记住的最重要一点是，\
+任务不是真正在后台运行的——它们一次运行一个，\
+然后被 PROS 调度器调换。如果你的任务运行了一些重复的动作（例如 while 循环），你调一下
+``delay()`` 或者 ``task_delay_until()``。如果没有 ``delay()`` 语句，\
+你的任务可能导致处理器资源匮乏，阻止内核正常运行。
 
-The PROS task scheduler is a preemptive, priority-based, round-robin scheduler.
-This means that tasks are preempted (interrupted) every millisecond to determine if another task
-ought to run. PROS decides which task to run next based on all of the ready tasks' priorities.
+PROS 任务调度器是一个抢占式、基于优先级的循环调度器。\
+这意味着任务每毫秒被抢占（中断），用来决定是否应该运行另外一个任务。\
+PROS 根据所有就绪任务的优先级决定下一个运行的是谁。
 
-    - Tasks which are eligible for execution are called "ready." Tasks are typically not ready
-      because they may be sleeping (in a ``task_delay``) or blocked waiting for a synchronization
-      mechanism (e.g. a mutex or semaphore).
-    - The higher the priority, the more crucial the task is considered, and more CPU time
-      will be awarded to the task. Ready tasks of higher priority will always run in preference
-      to lower priority tasks.
-    - Tasks of equal priority take preference when a task is preempted. In other words, if tasks A and
-      B have equal priority, then when A is interrupted, B will run next, even if A is still eligible for
-      execution. This is called round-robin scheduling.
+    - 符合执行条件的任务被称为“就绪”。未就绪的任务通常是因为他们在
+      在休眠（在 ``task_delay`` 中) 或被阻塞等待同步机制\
+      （例如互斥或信号量）。
+    - 优先级越高，任务会被认为越重要，更多的 CPU 时间会分配给\
+      这个任务。高优先级的就绪任务总会优先于\
+      低优先级的任务运行。
+    - 同等优先级任务在任务被抢占时具有优先度是相当的。换句话说，\
+      如果任务甲和任务乙具有相同优先级，当甲被中断时接下来乙会运行，即便甲仍然拥有执行资格。\
+      这叫作循环调度。
 
-On the Abuse of Tasks
+任务的滥用
 ---------------------
 
-Tasks are very often misused and abused in ways that make the PROS kernel behave in unintended ways.
-The following list are some commonly made mistakes and guidelines for using Tasks in PROS.
+任务经常被误用和滥用，这导致 PROS 内核以预料外的方式运行。\
+下面列出了在 PROS 中使用任务时常见的错误和准则：
 
-    - Tasks in real-time operating systems should be long-living. That is, tasks should not typically
-      perform a short operation and then die. Consider re-working the logic of your program to enable
-      such behavior.
-    - "Task functions" are not special, except that their signature needs to be correct. In other
-      programming environments for VEX, tasks must be marked with a special keyword. With most modern
-      programming environments, tasks are just functions that get executed asynchronously.
-    - It was mentioned above, but it's important enough for a second mention: every tasks'
-      loop should have a ``delay()`` statement.
+    - 实时操作系统中的任务应该是长期运行的。也就是说，\
+      任务通常不应该执行一个短期操作然后销毁。考虑重新处理程序逻辑来\
+      实现这种行为。
+    - “任务函数”并不特别，只是它们的签名必须正确。\
+      在其他 VEX 编程环境中，任务必须使用特殊关键字标记。\
+      在大多数现代编程环境中，任务仅仅是异步执行的函数。
+    - 虽然上面已经提到过了，但这件事重要到复读：每个任务的循环中\
+      必须有 ``delay()`` 语句。
 
 任务管理
 ===============
 
-Tasks in PROS are simple to create:
+PROS 的任务很容易创建：
 
 
 .. tabs ::
@@ -90,21 +90,21 @@ Tasks in PROS are simple to create:
                 TaskHandle my_task = taskCreate(my_task_fn, TASK_DEFAULT_STACK_SIZE, "PROS", TASK_PRIORITY_DEFAULT);
             }
 
-The `task_create <../../api/c/rtos.html#task_create>`_ function takes in a function where the task starts, an argument to the function,
-a priority for the task, and two new fields not yet discussed: stack size and name.
+`task_create <../../api/c/rtos.html#task_create>`_ 函数接收任务开始的函数、\
+那个函数的参数、任务的优先级，尚未讨论的新字段：栈大小和名字。
 
-Stack size describes the amount of stack space that is allocated for the task. The stack is an area for your
-program to store variables, return addresses for functions, and more. Real-time operating systems like PROS work
-in limited-memory situations and do not allow for a dynamically resizable stack. Modern desktop operating systems
-do not need to worry about stack space as much as you would in a RTOS. The good news is that most tasks should
-opt to use ``TASK_STACK_DEPTH_DEFAULT``, which should provide ample stack space for nearly any task. Very
-rudimentary and simple tasks (e.g. not many nested functions, no floating point context, few variables, only C)
-may be able to use ``TASK_STACK_DEPTH_MIN``.
+栈大小描述了分配给这个任务的栈空间。栈是程序\
+储存变量、返回函数地址等等的区域。像 PROS 这样在内存有限的情况下工作的实时操作系统是不允许\
+动态调整栈大小的。现代桌面操作系统\
+不需要像在 RTOS 那样担心栈空间。好消息是大多数任务应该选择
+``TASK_STACK_DEPTH_DEFAULT``，这会给几乎任何的任务操作提供足够的栈空间。\
+非常基本简单的任务（例如没有很多函数嵌套、没有浮点上下问、变量很少，只有 C)
+可能能够使用 ``TASK_STACK_DEPTH_MIN``。
 
-The last parameter is the task name. The task name allows you to give a task a human-friendly name for the task. It
-is primarily for debugging purposes and allows you (the human) to easily identify tasks if performing advanced task
-management. Task names may be up to 32 characters long, and you may pass NULL or an empty string into the function.
-In API2, `taskCreate <../../../cortex/api/index.html#taskCreate>`_ will automatically make the task name an empty string.
+最后的参数是任务的名字。任务名允许你为任务命名一个人性化的名字。\
+它主要用于调试目的，允许你（两脚兽）在执行高级任务管理中轻松识别任务。\
+任务名称最长可达32个字符，你可以将 NULL 或空字符串传递给函数。
+在 API2 中，`taskCreate <../../../cortex/api/index.html#taskCreate>`_ 会自动让任务名变成空字符串。
 
 同步
 ===============
