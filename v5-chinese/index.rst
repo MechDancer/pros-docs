@@ -91,7 +91,7 @@ PROS：文档主页
 ===========
 来自 `MechDancer <https://mechdancer.org>`_ 组织：
 
--   `YdrMaster <https://https://github.com/YdrMaster>`_
+-   `YdrMaster <https://github.com/YdrMaster>`_
 -   `berberman <https://github.com/berberman>`_
 
 .. image:: https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png
