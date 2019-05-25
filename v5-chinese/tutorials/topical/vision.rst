@@ -19,7 +19,7 @@ detected by the sensor. The characteristics of an object are defined in
 `vision_object_s_t <../../api/c/vision.html#vision_object_s_t>`_.
 
 通过大小
--------
+----------
 
 The simplest way to interact with the vision sensor is to get an object by its size.
 0 is the largest object detected by the sensor.
@@ -146,7 +146,7 @@ in this configuration.
            pros::Vision vision_sensor (VISION_PORT, pros::c::E_VISION_ZERO_CENTER);
          }
 
-曝露设置
+暴露设置
 ================
 In PROS Kernel 3.1.4 and earlier, the vision sensor exposure parameter was in the
 range [0,58]. In PROS Kernel 3.1.5 and newer, the parameter is scaled to be in

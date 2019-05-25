@@ -1,6 +1,6 @@
-==================
+==========================
 模拟数字接口（3 线端口）
-==================
+==========================
 
 .. note:: For a full list of functions for interacting with the ADI, see its
           `C API <../../api/c/adi.html>`_ and `C++ API <../../api/cpp/adi.html>`_.
@@ -439,7 +439,7 @@ And then used in the following manner:
          }
 
 超声波传感器
-----------
+-------------
 
 Ultrasonic sensors are used in a manner that is very similar to encoders, given
 that they are both two-wire sensors.

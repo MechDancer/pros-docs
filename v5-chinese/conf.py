@@ -70,8 +70,7 @@ html_context = {
 html_theme_options = {
     'analytics_id': 'UA-84548828-3',
     'versions': {
-        'V5': 'index',
-        'Cortex': '../cortex/index',
+        'V5': 'index'
     },
     'navigation_depth': 8
 }
