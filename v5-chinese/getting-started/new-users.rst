@@ -65,7 +65,7 @@ PROS 教程旨在展示如何将 C/C++ 编程应用\
 
 -  `PROS 项目结构 <../tutorials/general/project-structure.html>`_
 
--  `无线上传及冷热插拔 <../tutorials/topical/wireless-upload.html>`_
+-  `无线上传及冷热链接 <../tutorials/topical/wireless-upload.html>`_
 
 -  `调试 <../tutorials/general/debugging.html>`_
 

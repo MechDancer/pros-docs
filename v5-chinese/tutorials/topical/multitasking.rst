@@ -109,46 +109,46 @@ PROS 的任务很容易创建：
 同步
 ===============
 
-One problem which one often runs into when dealing with tasks is the
-problem of synchronization. If two tasks try to read the same sensor or
-control the same motor at the same time, unexpected behavior may occur
-since two tasks are trying to write to the same piece of data or variable
-(i.e. `race conditions <https://en.wikipedia.org/wiki/Race_condition#Software>`_).
-The concept of writing code which has protections against race conditions
-is called thread safety. There are many different ways to implement thread safety,
-and PROS has several facilities to help maintain thread safety.
+在使用任务时经常遇到的一个问题就是同步。
+如果两个任务试图同时读取同一个传感器或\
+控制同一个电机，由于两个任务同时写入同一数据或变量，\
+（例如 `竞争条件 <https://en.wikipedia.org/wiki/Race_condition#Software>`_）\
+可能会出现预料外的行为。\
+编写针对竞争条件代码的概念称为\
+线程安全。实现线程安全有许多不同的方法，\
+PROS 也拥有几个工具来帮助维护线程安全。
 
-The simplest way to ensure thread safety is to design tasks which will never access
-the same variables or data. You may design your code to have each subsystem of your
-robot in its own task. Ensuring that tasks never write to the same variables is called
-division of responsibility or separation of domain.
+确保线程安全的最简单方法是设计永远不会访问相同变量或数据的任务。\
+你可以设计机器人的每部分子系统拥有它们自己的任务。\
+确保任务从不写入相同的变量称为\
+责任划分（division of responsibility）或领域分离（separation of domain）。
 
 .. code-block:: c
    :linenos:
 
     int task1_variable = 0;
     void Task1(void * ignore) {
-        // do things
+        // 进行一些操作
         task1_variable = 4;
     }
 
     void Task2(void * ignore) {
-      // do things
-      // I can read task1_variable, but NOT write to it
+      // 进行一些操作
+      // 我可以读 task1_variable，但不能写
       printf("%d\n", task1_variable);
     }
 
-Sometimes this is impossible: suppose you wanted to write a PID
-controller on its own task and you wanted to change the target of the
-PID controller. PROS features two types of synchronization structures,
-*mutexes* and *notifications* that can be used to coordinate tasks.
+有时候这是不可能的：假设你想在一个任务上写一个 PID
+控制器，并想改变这个控制器的目标。\
+PROS 有两种类型的同步结构可用于协调任务，它们是：\
+*互斥* 和 *通知*。
 
 互斥
 -------
 
-Mutexes stand for mutual exclusion; only one task can hold a mutex at any given
-time. Other tasks must wait for the first task to finish (and release
-the mutex) before they may continue.
+互斥，即相互排斥；在给定任何时间中，只有一个任务可以持有互斥体。、
+其他任务必须等待地一个任务完成（并释放互斥体）\
+才能继续运行。
 
 .. tabs::
    .. tab:: C
@@ -158,12 +158,12 @@ the mutex) before they may continue.
 
          mutex_t mutex = mutex_create();
 
-         // Acquire the mutex; other tasks using this command will wait until the mutex is released
-         // timeout can specify the maximum time to wait, or MAX_DELAY to wait forever
-         // If the timeout expires, "false" will be returned, otherwise "true"
+         // 获取互斥体； 其他任务在使用这个命令时候会进入等待，直到互斥体释放
+         // 超时可以指定等待的最大时间，或使用 MAX_DELAY 永久等待
+         // 如果超时了，函数将会返回“false”，否则返回“true”
          mutex_take(mutex, timeout);
-         // do some work
-         // Release the mutex for other tasks
+         // 进行一些操作
+         // 为其他任务释放互斥体
          mutex_give(mutex);
 
    .. tab:: C++
@@ -172,20 +172,20 @@ the mutex) before they may continue.
          :linenos:
 
          Mutex mutex;
-         // Acquire the mutex; other tasks using this command will wait until the mutex is released
-         // timeout can specify the maximum time to wait, or MAX_DELAY to wait forever
-         // If the timeout expires, "false" will be returned, otherwise "true"
+         // 获取互斥体； 其他任务在使用这个命令时候会进入等待，直到互斥体释放
+         // 超时可以指定等待的最大时间，或使用 MAX_DELAY 永久等待
+         // 如果超时了，函数将会返回“false”，否则返回“true”
          mutex.take(timeout);
-         // do some work
-         // Release the mutex for other tasks
+         // 进行一些操作
+         // 为其他任务释放互斥体
          mutex.give();
 
-Mutexes do not magically prevent concurrent writing, but provide the ability for tasks to
-create "contracts" with each other. You can write your code such that a variable is never
-written to unless the task owns a mutex designated for that variable.
+互斥不会神奇地阻止并发写入，\
+而是为任务提供相互创建“契约”的能力。你可以想这样编写代码，确保\
+任务拥有变量指定的互斥体时才可写入变量。
 
 通知
 -------------
 
-Task notifications are a powerful new feature in PROS 3 which allows direct-to-task
-synchronization. A full tutorial on task notifications can be found `here <./notifications.html>`_.
+任务通知是 PROS 3 中强大的一个新功能，\
+它允许面向任务的同步。关于任务通知的完整教程可以在 `这里 <./notifications.html>`_ 找到。

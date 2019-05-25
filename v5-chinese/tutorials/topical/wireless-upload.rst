@@ -1,48 +1,48 @@
 ===================
-无线上传及冷热插拔
+无线上传及冷热链接
 ===================
 
-.. note:: Wireless Upload requires at least CLI 3.1.4, Kernel 3.1.6, VEXos 1.0.5, and OkapiLib 3.3.12 (if used).
+.. note:: 无线上传至少需要的版本为 CLI 3.1.4、内核 3.1.6、VEXos 1.0.5、OkapiLib 3.3.12（如果用了的话）。
 
-PROS supports wireless upload to the V5 Brain via a V5 Controller. Although there are no special requirements to 
-enable PROS to do this, file transfer speeds are typically unacceptably slow. To make them more reasonable, PROS
-has a different method of compiling your project so that the PROS kernel and other infrequently modified code
-are uploaded once and only the code you regularly modify (e.g. opcontrol.cpp, autonomous.cpp, and initialize.cpp)
-gets transferred to the V5 wirelessly. We call the code you upload once and never change the "cold image" and the
-code that changes frequently and gets uploaded every time the "hot image."
+PROS 支持通过 V5 手柄无线上传到 V5 Brain。尽管让 PROS 启用这个\
+没什么特殊需求，不过文件传输速度通常难以接受。为了让它们变得更合理，PROS
+有一种不同的方法来编译你的项目，以便 PROS 内核和其他不常改的代码\
+只上传一次；你经常改的代码（例如 opcontrol.cpp、autonomous.cpp、initialize.cpp）\
+可通过无线传到 V5。我们称你只传一次、不会修改的为“冷映像”，\
+频繁修改上传的代码为“热映像”。
 
-To enable this compilation mode, you should open your project's Makefile and edit the line:
+若要启用此编译模式，你得打开你项目的 Makefile，并且改这行：
 
 .. highlight: Makefile
 .. code-block:: Makefile
 
-   # Set to 1 to enable hot/cold linking
+   # 设置为 1 来启用冷/热链接
    USE_PACKAGE:=0
 
-so that ``USE_PACKAGE:=1``. Re-build and upload your project and PROS will automatically use the new files. PROS
-will automatically detect when you're using the same combination of libraries and decide not to re-upload the
-"cold" code. Verification that the library is present is done with filename and checksum of the file. As a result,
-if you use the same combination of libraries (cold image), only one copy of the cold iamge is uploaded to the V5.
+因此 ``USE_PACKAGE:=1``。重新构建并上传你的项目，PROS 将自动使用新文件。PROS
+会自动检测你是否在用相同的组合库，并且决定不去重新上传\
+“冷”代码。校验库是否存在是靠文件名和校验码来实现的。
+如果你使用相同的组合库（冷映像），仅有一份冷映像的副本会被上传到 V5。
 
 大型项目
 --------------
-Projects with large codebases may still take some time to upload even with hot/cold linking. You may be able to 
-reduce the size of your hot image by making part of your project a library so that some code is included in the
-cold image. To do so, edit the following lines of your project's Makefile:
+即使有热/冷链接，具有大型代码库的项目可能仍然需要一些时间来上传。\
+你可以通过把项目的一部分作为库使，让它们被包括进冷映像，以此来减少热映像的大小。\
+为此，修改你项目 Makefile 的以下几行：
 
 .. highlight: Makefile
 .. code-block:: Makefile
 
-    # Set this to 1 to add additional rules to compile your project as a PROS library template
+    # 设置为 1 可添加其他规则，为了将项目编译为 PROS 库模板
     IS_LIBRARY:=0
     # TODO: CHANGE THIS!
     LIBNAME:=libbest
     VERSION:=1.0.0
     # EXCLUDE_SRC_FROM_LIB= $(SRCDIR)/unpublishedfile.c
 
-Change ``IS_LIBRARY`` to ``1`` and rename the library to something of your choosing. We recommend ``lib<robot name>``
-or ``lib<team number>`` (e.g. ``lib7701``) to be unique enough to avoid cause naming conflicts with other cold 
-images. When compiling, PROS will include this library as part of the cold image. Your library should only contain
+将 ``IS_LIBRARY`` 改为 ``1``，并挑个名字给库命名。我们推荐 ``lib<你机器人的名字>`` 或者
+``lib<你的队号>``（例如``lib7701``）以确保具它是唯一的，不会与其他冷映像发生命名冲突。\
+When compiling, PROS will include this library as part of the cold image. Your library should only contain
 files you infrequently change so that you do not have to frequently upload the cold image. By default, the Makefile 
 is set up to exclude your project's opcontrol.cpp, autonomous.cpp, and initialize.cpp files. If you change other 
 files frequently, you can add lines like ``EXCLUDE_SRC_FROM_LIB+=$(SRCDIR)/myfile.c`` as needed.
@@ -74,7 +74,7 @@ An example of a modified Makefile's relevant lines is shown below:
     EXCLUDE_SRC_FROM_LIB+=$(SRCDIR)/scripts             # exclude any files in the src/scripts directory
     EXCLUDE_SRC_FROM_LIB+=$(SRCDIR)/lcdselector.cpp     # exclude src/lcdselector.cpp
 
-冷热插拔疑难解答
+冷热链接疑难解答
 --------------------------------
 Since hot/cold linking involves ensuring two compiled programs interact consistently, there may be additional runtime
 issues running in this mode. This section serves as a guide for debugging these sorts of issues.
