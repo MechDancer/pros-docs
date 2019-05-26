@@ -7,7 +7,7 @@
 PROS 支持通过 V5 手柄无线上传到 V5 Brain。尽管让 PROS 启用这个\
 没什么特殊需求，不过文件传输速度通常难以接受。为了让它们变得更合理，PROS
 有一种不同的方法来编译你的项目，以便 PROS 内核和其他不常改的代码\
-只上传一次；你经常改的代码（例如 opcontrol.cpp、autonomous.cpp、initialize.cpp）\
+只上传一次；经常改的代码（例如 opcontrol.cpp、autonomous.cpp、initialize.cpp）\
 可通过无线传到 V5。我们称你只传一次、不会修改的为“冷映像”，\
 频繁修改上传的代码为“热映像”。
 
@@ -26,14 +26,14 @@ PROS 支持通过 V5 手柄无线上传到 V5 Brain。尽管让 PROS 启用这�
 
 大型项目
 --------------
-即使有热/冷链接，具有大型代码库的项目可能仍然需要一些时间来上传。\
+即使有冷/热链接，具有大型代码库的项目可能仍然需要一些时间来上传。\
 你可以通过把项目的一部分作为库使，让它们被包括进冷映像，以此来减少热映像的大小。\
 为此，修改你项目 Makefile 的以下几行：
 
 .. highlight: Makefile
 .. code-block:: Makefile
 
-    # 设置为 1 可添加其他规则，为了将项目编译为 PROS 库模板
+    # 设置为 1 可添加其他规则，将项目编译为 PROS 库模板
     IS_LIBRARY:=0
     # TODO: CHANGE THIS!
     LIBNAME:=libbest
@@ -42,54 +42,54 @@ PROS 支持通过 V5 手柄无线上传到 V5 Brain。尽管让 PROS 启用这�
 
 将 ``IS_LIBRARY`` 改为 ``1``，并挑个名字给库命名。我们推荐 ``lib<你机器人的名字>`` 或者
 ``lib<你的队号>``（例如``lib7701``）以确保具它是唯一的，不会与其他冷映像发生命名冲突。\
-When compiling, PROS will include this library as part of the cold image. Your library should only contain
-files you infrequently change so that you do not have to frequently upload the cold image. By default, the Makefile 
-is set up to exclude your project's opcontrol.cpp, autonomous.cpp, and initialize.cpp files. If you change other 
-files frequently, you can add lines like ``EXCLUDE_SRC_FROM_LIB+=$(SRCDIR)/myfile.c`` as needed.
+在编译过程中，PROS 会把这个库包括到冷映像的一部分。你的库仅应包含\
+不常改变的文件，以便不需要频繁上传冷映像。默认情况下，Makefile
+被设置为排除项目的 opcontrol.cpp、autonomous.cpp、、initialize.cpp 文件。如果你经常修改其他文件，\
+可以根据需要添加 ``EXCLUDE_SRC_FROM_LIB+=$(SRCDIR)/myfile.c``。
 
-**An important caveat** is that code that goes into the cold image is **not** able to link against anything (call 
-functions or use variables) in the hot image. Doing so will result in a linker error - you will be told what's
-trying to refer to what in the hot image:
+**一个重要的警告**：进入冷映像的代码 **不能** 链接到热映像的任何东西（调用函数或\
+使用变量）。这样做将导致链接器错误——你将被告知\
+哪处引用了热映像：
 
 ::
 
     bin/libtheseus.a(lcdselector.cpp.o):(.data.inits+0x0): undefined reference to `auton::allianceInit(auton::color)'
 
-You should refactor your code so that only "hot" code calls "cold" code or include the culprit file in the hot image.
+你应该重构代码，以便只有“热”代码调用“冷”代码，或把引起问题的文件丢到热映像中。
 
-An example of a modified Makefile's relevant lines is shown below:
+Makefile 修改后的几行示例如下所示：
 
 .. highlight: Makefile
 .. code-block:: Makefile
 
-    # Set to 1 to enable hot/cold linking
+    # 设置为 1 来启用冷/热链接
     USE_PACKAGE=1
 
-    # Set this to 1 to add additional rules to compile your project as a PROS library template
+    # 设置为 1 可添加其他规则，将项目编译为 PROS 库模板
     IS_LIBRARY:=1
     LIBNAME:=libtheseus
     VERSION:=1.0.0
-    # this line excludes opcontrol.c and similar files
+    # 这一行排除 opcontrol.c 和类似文件
     EXCLUDE_SRC_FROM_LIB+=$(foreach file, $(SRCDIR)/opcontrol $(SRCDIR)/initialize $(SRCDIR)/autonomous,$(foreach cext,$(CEXTS),$(file).$(cext)) $(foreach cxxext,$(CXXEXTS),$(file).$(cxxext)))
-    EXCLUDE_SRC_FROM_LIB+=$(SRCDIR)/scripts             # exclude any files in the src/scripts directory
-    EXCLUDE_SRC_FROM_LIB+=$(SRCDIR)/lcdselector.cpp     # exclude src/lcdselector.cpp
+    EXCLUDE_SRC_FROM_LIB+=$(SRCDIR)/scripts             # 排除 src/scripts 目录中的所有文件
+    EXCLUDE_SRC_FROM_LIB+=$(SRCDIR)/lcdselector.cpp     # 排除 src/lcdselector.cpp
 
 冷热链接疑难解答
 --------------------------------
-Since hot/cold linking involves ensuring two compiled programs interact consistently, there may be additional runtime
-issues running in this mode. This section serves as a guide for debugging these sorts of issues.
+由于冷/热链接涉及确保两个编译后程序一致交互，\
+这种模式下可能有额外运行期问题。本节是调试这类问题的指南。
 
-Generally, if the program appears to be running correctly (i.e. the screen shows), then the compilation mode worked 
-correctly and the error you're experiencing is likely related to your code's logic. If your code's logic runs correctly
-when not using hot/cold linking, contact us so we may assist in troubleshooting.
+通常，如果程序看起来运行正常（即屏幕显示）, 那么编译模式工作正常，\
+你遇到的错误可能与代码逻辑有关。如果你的代码逻辑在不使用冷/热链接时可以正常工作，\
+请联系我们，以便我们可以帮你排除故障。
 
-If you see a black scren, then PROS did not boot correctly.
+如果屏幕是黑的，PROS 没有正确启动。
 
-- A global constructor is in an infinite loop or raised an exception.
-- See also troubleshooting steps below
+- 全局构造器处于无限循环中或引发了异常
+- 另请参见下面的故障排除步骤
 
-If you see a grey screen, then PROS booted correctly, but is not running your hot image.
+如果屏幕是灰的，PROS 正确启动了，但没有运行热映像。
 
-- Delete all user programs, perform a clean build, and upload
+- 删除所有用户程序，执行清理构建，然后上传
 
-If you're having issues, contact us so we may assist in troubleshooting.
+如果你有问题，请联系我们，以便我们可以帮助您排除故障。

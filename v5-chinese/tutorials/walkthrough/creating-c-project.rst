@@ -2,14 +2,14 @@
 创建一个 C 项目
 ====================
 
-By default, a new PROS project contains C++ source files and the C++ API. If you would prefer to program in C
-instead, change the extension of the source files (``initialize.cpp``, ``autonomous.cpp``, and ``opcontrol.cpp``)
-to ``.c``. 
+默认情况下，一个新的 PROS 项目包含 C++ 源码和 C++ API。如果你更倾向于用 C
+编程，请将源码文件扩展名（``initialize.cpp``、``autonomous.cpp``、``opcontrol.cpp``）\
+改为 ``.c``。
 
-.. warning:: Do not change any of the PROS header files in this process. That will cause the wrong files to be
-             included in your project, and will likely prevent compilation. Only modify the extensions of the ``.cpp`` files.
+.. warning:: 在此过程中不要更改任何 PROS 头文件。这将导致错误的文件包含到你的项目里，\
+             并且这可能会阻止编译。仅修改 ``.cpp`` 文件的扩展名。
 
-This will compile your PROS project as C code, and will give you access to the `C API <../../api/c/index.html>`_.
+这将把你的 PROS 项目看作 C 工程编译，并允许你访问 `C API <../../api/c/index.html>`_。
 
-If you're interested in combining C and C++, you should read through the `Combining C and C++ tutorial <../general/combining-c-cpp.html>`_.
-Please note that it is typically a complicated matter to combine the two, and rarely a good idea.
+如果你对结合 C 与 C++ 感兴趣，你应该仔细阅读 `结合 C 与 C++ 教程 <../general/combining-c-cpp.html>`_。\
+请注意，通常情况下把两者结合到一起是很复杂的事情，很少是个好主意。
