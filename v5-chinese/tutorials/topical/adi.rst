@@ -2,35 +2,35 @@
 模拟数字接口（3 线端口）
 ==========================
 
-.. note:: For a full list of functions for interacting with the ADI, see its
-          `C API <../../api/c/adi.html>`_ and `C++ API <../../api/cpp/adi.html>`_.
+.. note:: 要了解与模拟数字接口交互的完成函数列表，查看
+          `C API <../../api/c/adi.html>`_ 和 `C++ API <../../api/cpp/adi.html>`_。
 
 .. contents:: :local:
 
 模拟传感器
 ==============
 
-While computers, microcontrollers, and other devices that interface with
-VEX robots are digital systems, most of the real world operates as
-analog components, where a range of possible values exist instead of
-simply an arrangement of 1s and 0s. Analog sensors like potentiometers and line
-trackers are used to communicate with these analog real-world systems.
-These sensors return a number within a preset range of values
-in accordance with their input, as opposed to a digit sensor which
-simply returns an on or off state.
+虽然与 VEX 机器人对接的计算机，微控制器和其他设备是数字系统，\
+但现实世界的大多数成分都表现为\
+模拟的，其中存在一系列可能的值，而不仅仅是
+1 和 0 的排列。电位器和\
+循线传感器等模拟传感器用于与这些模拟的真实系统进行通信。\
+这些传感器根据它们的输入返回预设值范围内的数字，\
+而不是像数字传感器那样\
+简单地返回开或关的状态。
 
-To take these analog inputs and convert them to information that the
-Cortex can actually use, ADCs (Analog to Digital Converters) are used on
-each of the Analog In ports to convert the analog input signals (varying
-voltage signals) to 12 bit integers. As a result, the range of all
-analog sensors when used with the Cortex is 0 to 4095 (the range of a 12
-bit unsigned integer).
+要获取这些模拟输入并将其转换为 Cortex 实际可以使用的信息，\
+每个模拟输入端口都使用 ADC（模数转换器）\
+将模拟输入信号（变化的\
+电压信号）转换为 12 位整数。因此，\
+用于 Cortex 时，所有模拟传感器的范围是 0 到 4095（12位\
+无符号整数的范围）。
 
 初始化
 --------------
 
-As with all ADI sensors, the first step to using the sensor is to set the configuration
-for its ADI port.
+使用任何模拟数字传感器的第一步是设置其\
+端口配置。
 
 .. tabs::
    .. group-tab :: C
@@ -55,16 +55,15 @@ for its ADI port.
 
          void initialize() {
            pros::ADIAnalogIn sensor (ANALOG_SENSOR_PORT);
-           // Use the sensor
+           // 使用传感器
          }
 
-Additionally, it is often worthwhile to calibrate analog sensors before using them
-in the ``initialize()`` function. The
-`analog_calibrate <../../api/c/adi.html#adi-analog-calibrate>`_ function collects
-approximately 500 data samples over a period of half a
-second and returns the average value received over the sampling period.
-This average value can be used to account for variations like ambient light for
-line trackers.
+另外，最好先校准模拟传感器，再在
+``initialize()`` 函数中使用它们。\
+`analog_calibrate <../../ api / c / adi.html＃adi-analog-calibrate>`_ 函数\
+在半秒的时间内采样大约 500 个数据，\
+并返回这些数据的平均值。\
+该平均值可用于说明环境变化，如循线传感器感受到的环境光等。
 
 .. tabs::
    .. group-tab :: C
@@ -93,27 +92,27 @@ line trackers.
            sensor.calibrate();
          }
 
-电位计
+电位器
 -------------
 
-Potentiometers measure angular position and can be used to determine the
-direction of rotation of its input. Potentiometers are best used in
-applications such as lifts where the sensor is not at risk of being
-rotated beyond its 250-degree physical constraint. Potentiometers
-typically do not need to be calibrated, although it may be desired as it
-helps account for possible shifting in the potentiometer mounting and to
-find the actual range of the potentiometer due to its mechanical stops
-as that range may be closer to 5-4090 instead of 0-4095. If the
-potentiometer is not calibrated, the `analog_read <../../api/c/adi.html#adi-analog-read>`_
-function may be used to obtain the raw
-input value of the potentiometer. If the sensor was calibrated, the
-`analog_read_calibrated <../../api/c/adi.html#adi-analog-read-calibrated>`_ function should be used,
-as it will account for the sensor's
-calibration and return more accurate results. The input to both of these
-functions is the channel number of the sensor, and an integer is
-returned.
+电位计测量角位置，可用于确定\
+其输入的旋转方向。电位计最适用于\
+升降机等结构中，这些结构中传感器不会有\
+旋转超过其 250 度的物理约束的风险。电位器\
+通常不需要校准，但有可能还是需要\
+进行校准，因为校准有助于解决电位器安装中的可能变化，或者\
+找到电位器被机械约束的实际范围，\
+因为该范围可能更接近 5-4090 而不是 0-4095。如果\
+不校准电位器，可以使用 `analog_read <../../api/c/adi.html＃adi-analog-read>`_ \
+函数来获得电位计的原始\
+输入值。如果传感器已校准，\
+则应使用`analog_read_calibrated <../../ api / c / adi.html＃adi-analog-read-calibrated>`_ 函数，\
+因为它将考虑传感器的校准\
+并返回准确的结果。这两个函数的输入（参数）\
+是传感器的通道号，并返回一个整数。
 
-Thus an example of use on a lift would look like:
+
+因此在升降机中使用的例子可能看起来像这样：
 
 .. tabs::
    .. group-tab:: C
@@ -126,9 +125,9 @@ Thus an example of use on a lift would look like:
          #define MOTOR_PORT 1
 
          void autonomous() {
-           //while the potentiometer is not at its maximum position
+           // 若电位器没有达到其最大值
            while (adi_analog_read(POTENTIOMETER_PORT) < 4095) {
-             motor_move(MOTOR_PORT, 127); //activate the lift
+             motor_move(MOTOR_PORT, 127); // 启动升降机
              delay(50);
            }
          }
@@ -145,14 +144,14 @@ Thus an example of use on a lift would look like:
          void autonomous() {
            pros::ADIPotentiometer sensor (POTENTIOMETER_PORT);
            pros::Motor motor (MOTOR_PORT);
-           //while the potentiometer is not at its maximum position
+           // 若电位器没有达到其最大值
            while (sensor.get_value() < 4095) {
              motor = 127;
              pros::delay(50);
            }
          }
 
-寻线器
+循线传感器
 ------------
 
 VEX Line Trackers operate by measuring the amount of light reflected to

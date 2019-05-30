@@ -17,16 +17,16 @@ firmware
 include
 =======
 
-所有 **头** 文件都可在 ``include`` 目录找到。 One
-header file, `api.h <../../api/index.html>`_, is required to declare
-the PROS library functions. This file exists merely to include the individual
-PROS API headers, all of which can be found in ``include/pros``. Each header file
-in this directory covers a specific aspect of interacting with the V5 hardware,
-and correlates to the files found in the `API documentation <../../api/index.html>`_.
+所有 **头** 文件都可在 ``include`` 目录找到。其中的一个\
+头文件，\ `api.h <../../api/index.html>`_\ ，用于声明
+PROS 库函数。这个文件的存在仅是为了包含其他\
+PROS API 头文件，那些文件都可以在 ``include/pros`` 中找到。这个目录中的每个头文件\
+涵盖了与V5硬件交互的特定方面，\
+并与 `API documentation <../../api/index.html>`_ 中提到的文件相关。
 
 另一个文件 ``main.h`` 旨在声明用户代码文件之间共享的函数\
 和变量。``main.h`` 还\
-还提供各种可配置选项，根据你的需求定制PROS。
+还提供各种可配置选项，根据你的需求定制 PROS。
 
 * ``PROS_USE_SIMPLE_NAMES``：如果定义了这个，一些常用的枚举将会被预处理器宏赋予更短、更方便的命名模式。\
   举个例子，
@@ -70,6 +70,6 @@ PROS 默认将用户代码分为\
 这将保证 PROS API 和其他关键的定义在\
 每个文件中都可用。
 
-虽然比某些环境更复杂，但是将代码分割提供了强大的\
+虽然提高了复杂度，但是将代码分割开带来了强大的\
 模块性和复用性，尤其是在与源码控制\
 相结合的时候。
