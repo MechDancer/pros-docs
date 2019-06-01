@@ -2,10 +2,10 @@
 API 主页
 ========
 
-This document covers the main PROS API, which is completely sufficient for most users' needs.
+本文档涵盖了主要的PROS API，对于大多数用户的需求已经够了。
 
 .. toctree::
-   :caption: C API Headers
+   :caption: C API 头文件
    :titlesonly:
 
    ./c/adi
@@ -17,7 +17,7 @@ This document covers the main PROS API, which is completely sufficient for most 
 
 
 .. toctree::
-   :caption: C++ API Headers
+   :caption: C++ API 头文件
    :titlesonly:
 
    ./cpp/adi
@@ -27,15 +27,15 @@ This document covers the main PROS API, which is completely sufficient for most 
    ./cpp/rtos
    ./cpp/vision
 
-To aid in transitioning from `PROS 2 <../../cortex/index.html>`_ syntax to PROS 3, a `Legacy API Header <./api-legacy.html>`_
-is provided. This header provides PROS 2 functionality in its original syntax.
+为了帮助从 `PROS 2 <../../cortex/index.html>`_ 语法转换到 PROS 3，我们提供了 `遗留 API 头文件 <./api-legacy.html>`_。\
+它以原始的语法提供了 PROS 2 功能。
 
 .. toctree::
    :titlesonly:
 
    ./api-legacy
 
-For additional RTOS-related features, check out the `Extended API <../extended/apix.html>`_. Be warned, these features
-are intended for advanced users only and may be very complex to use.
+有关其他与 RTOS 相关的特性，请查看 `Extended API <../extended/apix.html>`_。请注意，这些特性\
+这些功能仅供高级用户，使用起来可能非常复杂。
 
 - :doc:`../extended/apix`

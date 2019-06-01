@@ -1,12 +1,12 @@
 ===================
-Extended API Topics
+扩展 API 专题
 ===================
 
-Some features of PROS are best suited to advanced users with prior experience with Real Time Operating Systems.
-These tutorials will cover these more complex features.
+一些 PROS 特许适合具有实时操作系统使用经验的高级用户。\
+这些教程将涵盖这些更复杂的特性。
 
 .. toctree::
-   :caption: Content
+   :caption: 内容
    :glob:
    :titlesonly:
 

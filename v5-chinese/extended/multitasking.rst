@@ -1,9 +1,9 @@
 ===========================
-Multitasking (Extended API)
+多任务（扩展 API）
 ===========================
 
-Queues
+队列
 ======
 
-Recursive Mutexes
+递归互斥
 =================

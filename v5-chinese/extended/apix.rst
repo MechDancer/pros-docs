@@ -1,5 +1,5 @@
 ============
-Extended API
+扩展 API
 ============
 
 .. note:: Also included in the Extended API is `LVGL <https://littlevgl.com/>`_.
