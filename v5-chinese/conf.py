@@ -95,3 +95,4 @@ highlight_language = "c"
 nitpicky = True
 
 blog_path = 'blog/index'
+blog_baseurl = 'blog'
