@@ -17,7 +17,7 @@ PROS 项目中同样有效，同时，无效的代码给出的错误\
 
 -  `函数 <http://www.studytonight.com/c/user-defined-functions-in-c.php>`__：\
    C 是一种极其强调函数的语言，了解函数\
-   的作用是使用 PROS 的基础。 `PROS API <../api/index.html>`_ 是一系列函数，\
+   的作用是使用 PROS 的基础。`PROS API <../api/index.html>`_ 是一系列函数，\
    因此只要你想和传感器或电机交互，就一定会用到函数。
 
 -  `头文件 <https://www.tutorialspoint.com/cprogramming/c_header_files.htm>`__：\
