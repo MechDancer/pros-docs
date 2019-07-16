@@ -9,7 +9,7 @@
 
 .. note:: 如果你使用的是基于 Debian，版本 >18.04 的 Linux 发行版，你可在 `这里 <https://www.ubuntuupdates.org/package/core/disco/universe/base/gcc-arm-none-eabi>`_ 找到工具链。
 
-.. note:: 如果你使用的不是基于 Debian 的 Linux 发行版，请检查偏好的包仓库以获取更新版本的工具链。主要的要求是你得获得一个使用 GCC 7.2 或更高版本的。
+.. note:: 如果你使用的不是基于 Debian 的 Linux 发行版，请检查偏好的包仓库以获取更新版本的工具链。不管怎样，你得获得一个使用 GCC 7.2 或更高版本的工具链。
 
 安装 CLI
 ------------------
