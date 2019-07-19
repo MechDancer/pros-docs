@@ -1,0 +1,30 @@
+language: python
+
+python:
+  - "3.6"
+
+before_install:
+  chmod 755 ./scripts/*
+
+install:
+  - ./scripts/travis_install.sh
+
+script:
+  - make clean chinese
+  - ./scripts/travis_deploy.sh
+  
+cache: pip
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  local_dir: ./res
+  github_token: $GitHubToken
+  repo: MechDancer/v5-chinese
+  keep_history: true
+  target_branch: master
+  on:
+    branch: master
+
+notifications:
+  webhooks: https://oapi.dingtalk.com/robot/send?access_token=4b59c5ece57fc88af8fda28cc07573c4caf525aa69afc0cc888ccf3ce6dbe41b
