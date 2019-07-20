@@ -1,36 +1,36 @@
 =========================
-PROS Kernel 3.1.2 Release
+PROS 内核 3.1.2 版本
 =========================
 
 .. post:: 16 October, 2018
    :tags: blog, kernel-release
 
-New Features:
+新特性：
 
-- Controller rumble motor functionality
+- 手柄运行（rumble）电机功能
 
-Bugfixes:
+错误修复：
 
-- Global ``ADIGyro`` constructors now work
+- 全局构造函数 ``ADIGyro`` 现在可以工作了
 
-- Fix the port names for the ``ADIUltrasonic`` constructor
+- 修复 ``ADIUltrasonic`` 构造函数的端口名
 
-- Fix the bug where ``get_digital_new_press()`` would always return ``true``
+- 修复 ``get_digital_new_press()`` 总会返回 ``true`` 的 bug
 
-- Implement ``pros::Task::remove()``, which is analogous to ``task_delete()``
+- 实现 ``pros::Task::remove()``，这类似于 ``task_delete()``
 
-- Change VDML initialization process to fix global initialization for user-defined objects that use VDML functionality in a task immediately upon startup
+- 更改 VDML 初始化过程，来修复用户定义使用 VDML 功能对象在任务中立即启动全局初始化
 
-Deprecated:
+已弃用：
 
-- Deprecated any of the ADI port configuration enum values that were identical to generic I/O types (e.g. the ``E_ADI_SMART_POT`` is deprecated in favor of ``E_ADI_ANALOG_IN``). Projects will still compile and be functionally equivalent to the new preferred value, but will raise a warning to use the new value.
+- 弃用与通用 I/O 类型相同的 ADI 端口配置枚举值（例如使用 ``E_ADI_SMART_POT`` 而不推荐 ``E_ADI_ANALOG_IN``）。项目仍然会编译并在功能上等同于新的偏好值，但会发出推荐使用新值的警告。
 
-Header Docs:
+头文件文档：
 
-- Clarify parameter initialization for ``task_delay_until()``
+- 阐明 ``task_delay_until()`` 的参数初始化
 
-- Describe ``errno`` meanings for controller text setting
+- 描述手柄文本设置 ``errno`` 的含义
 
-- Typo fix in ``Motor::get_current_limit()`` docs
+- 修复 ``Motor::get_current_limit()`` 文档中的拼写错误
 
-- Fix return units for ``motor_get_actual_velocity()``
+- 修复 ``motor_get_actual_velocity()`` 的返回单位

@@ -15,7 +15,7 @@
 4. 运行 :code:`brew cask install pros-editor` 安装 PROS 编辑器（CLI 也会被安装）。这会花上一点时间。
 5. 就这样！你现在可以开始使用 PROS 3 了。
 
-.. note:: 如果你不想用 PROS 编辑器而只想使用 PROS CLI， :code:`brew install pros-cli` 来替换步骤 3 中的命令。
+.. note:: 如果你不想用 PROS 编辑器而只想使用 PROS CLI，用 :code:`brew install pros-cli` 来替换步骤 3 中的命令。
 
 其他方式
 -------------
@@ -59,33 +59,33 @@
 :code:`RuntimeError: Click will abort further execution because Python 3 was configured
 to use ASCII as encoding for the environment.`
 
-If you are using the PROS Editor, open up your init script (File > Init Script) and add the following two lines:
+如果你在使用 PROS 编辑器，打开初始化脚本（File > Init Script）并添加以下两行：
 
 .. code-block:: coffee
 
    process.env.LANG = 'en_US.utf-8'
    process.env.LC_ALL = 'en_US.utf-8'
 
-If you are just using the CLI at the Terminal:
+如果你仅在终端中使用 CLI：
 
-1. Open up your Terminal.
-2. Run :code:`cd` to make sure you're in your home directory.
-3. Run :code:`touch .bash_profile` to make sure you have a shell login configuration file.
-4. Edit the :code:`~/.bash_profile` file in your preferred editor (you can also run :code:`open -e .bash_profile` to edit it in TextEdit), adding the following two lines at the end:
+1. 打开终端。
+2. 运行命令 :code:`cd` 确保你在主目录下。
+3. 运行命令 :code:`touch .bash_profile` 确保存在 shell 配置文件。
+4. 在你偏好的编辑器中（也可以运行 :code:`open -e .bash_profile` 使用 TextEdit）修改 :code:`~/.bash_profile` 文件，在末尾添加以下两行：
 
 .. code-block:: bash
 
    export LANG="en_US.utf-8"
    export LC_ALL="en_US.utf-8"
 
-5. Run :code:`. .bash_profile` to reload the file for the current session.
+5. 运行命令 :code:`. .bash_profile` 为当前会话重载配置文件。
 
 :code:`/bin/sh: intercept-c++: command not found`
 
-.. note:: This issue should be fixed for PROS CLI versions > 3.1.2
+.. note:: 该问题将在 PROS CLI 3.1.2 版本后修复。
 
-1. Check your PROS CLI version by running :code:`prosv5 --version`. If your version is <= 3.1.2, try updating first to check if that solves your problem. If not, continue with step 2.
-2. Follow steps 1-4 listed above for those using the CLI only. In step 4, however, add the following line instead (replacing the Xs with the numbers found in step 1):
+1. 使用 :code:`prosv5 --version` 检查 PROS CLI 版本。如果 <= 3.1.2，先试试更新以下，看看问题有没有解决。如果没有，继续往下看步骤 2。
+2. 遵循上方仅在终端中使用 CLI 的步骤 1-4，不过在步骤 4 中改为添加以下一行（将 Xs 替换为第一部中获取的版本号）：
 
 .. code-block:: bash
 

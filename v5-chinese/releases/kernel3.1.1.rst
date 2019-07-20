@@ -1,30 +1,30 @@
 =========================
-PROS Kernel 3.1.1 Release
+PROS 内核 3.1.1 版本
 =========================
 
 .. post:: 20 September, 2018
    :tags: blog, kernel-release
 
-A variety of bugfixes and usability improvements over 3.1.0.
+在 3.1.0 之上修复了许多错误，提升了各方面的可用性。
 
-Bugfixes:
+错误修复：
 
-- Competition control now works properly with running matches from the brain/controller (as opposed to just a competition switch/field controller before)
+- 比赛控制现在可以通过 Brain/手柄（而不是之前的比赛开关/场控) 正确运行
 
-- Global constructors now work for Smart Devices (Motors, Vision Sensors, etc.)
+- 智能设备（电机、视觉传感器等）的全局构造函数现在可以工作了
 
-- ``pros::Controller::print()`` will now compile and work properly
+- ``pros::Controller::print()`` 现在可以编译并正常工作
 
-- Okapilib now works with the template operator control file by default, no more need to remove the ``using pros::literals`` line first
+- Okapilib 现在默认使用模板操作符控制文件，不再需要事先移除 ``using pros::literals`` 这行
 
-New Features:
+新特性：
 
-- A proper Gyro Driver in C and C++. No more need to manually configure the ADI port to be a gyroscope.
+- 在 C 和 C++ 中正确的陀螺仪驱动。不再需要手动配置 ADI 端口使其成为陀螺仪
 
-Usability Improvements:
+可用性提升：
 
-- All of the competition control functions (``autonomous()``, ``opcontrol()``, etc.) are now prototyped in ``main.h`` and can be called from user code
+- 所有比赛控制函数（``autonomous()``、``opcontrol()`` 等）现在被原型化为 ``main.h``，并且能够从用户代码中调用
 
-- ``PROS_USE_SIMPLE_NAMES`` is implemented for all of the API headers in both C and C++
+- C 和 C++ 中所有 API 头文件实现了 ``PROS_USE_SIMPLE_NAMES``
 
 - `motor_move（）``和它的C ++等价程序会正确地将输入缩放到``[-127,127]``，因此街机控制代码将正常工作而不用担心在用户代码中有摇杆值溢出的问题

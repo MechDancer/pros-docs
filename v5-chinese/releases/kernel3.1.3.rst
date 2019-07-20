@@ -1,10 +1,10 @@
 =========================
-PROS Kernel 3.1.3 Release
+PROS 内核 3.1.3 版本
 =========================
 
 .. post:: 25 October, 2018
    :tags: blog, kernel-release
 
-Bug fix for ADI Sensors. PROS kernel version 3.1.2 introduced an issue where the
-gyroscope and other ADI sensors would not return proper values. This restores the
-expected functionality, and ADI sensors will work properly again.
+修复 ADI 传感器的 bug。PROS 内核 3.1.2 版本引入了一个问题，\
+陀螺仪和其他 ADI 传感器不能返回正确数值。这版本恢复了预期功能，\
+ADI 传感器将再次正常工作。

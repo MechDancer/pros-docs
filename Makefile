@@ -30,4 +30,3 @@ linkcheck:
 
 chinese:
 	sphinx-build -M html v5-chinese/ build/v5-chinese/
-	touch build/v5-chinese/html/.nojekyll
