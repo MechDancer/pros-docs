@@ -1,15 +1,15 @@
 =========================
-PROS Kernel 3.1.4 Release
+PROS 内核 3.1.4 版本
 =========================
 
 .. post:: 14 November, 2018
    :tags: blog, kernel-release
 
-New Features:
+新特性：
 
-- Vision Sensor Signature Read/Write, you can now configure signatures in your PROS project (though the existing method of saving signatures through the Vision Utility still works)
-- Vision Sensor Color Code functionality, you can now configure color codes for the sensor (this must be done programmatically, not through the Vision Utility) and filter objects by their color code with the ``get_by_code()`` and ``read_by_code()`` functions
+- 视觉传感器签名读/写，你现在可以在 PROS 工程中配置签名（尽管通过视觉实用程序保存签名这个存在的方法依然可用）
+- 视觉传感器颜色代码功能，你现在可以为传感器配置颜色代码（必须通过编程完成，不能通过视觉实用程序），然后使用函数 ``get_by_code()`` 和 ``read_by_code()`` 来通过颜色代码过滤对象
 
-Usability Impovements:
+可用性提升：
 
-- The errno values for Vision Sensor object retrieval functions are now more clear.
+- 视觉传感器对象检索功能的 errno 值现在更加清晰。

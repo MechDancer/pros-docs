@@ -1,35 +1,35 @@
 =========================
-PROS Kernel 3.1.6 Release
+PROS 内核 3.1.6 版本
 =========================
 
 .. post:: 18 February, 2019
    :tags: blog, kernel-release
 
-.. warning:: Be sure to look at important upgrade instructions below.
+.. warning:: 请务必查看以下重要升级说明。
 
-New Features:
+新特性：
 
-- Add support for hot/cold linking
-- Bugfixes to LLEMU and task notifications
+- 支持冷/热链接
+- 修复 LLEMU 和任务通知的一些 bug
 
-Usability Impovements:
+可用性提升：
 
-- Refactored Makefiles
+- 重构 Makefile
 
-Bugfixes:
+错误修复：
 
-- Miscellaneous RTOS bugfixes
-- Fixed a possible buffer overrun when using controller printing
+- 各式各样的 RTOS bug
+- 修复了使用手柄打印时可能出现的缓冲区溢出
 
-Important Upgrade Instructions
+重要升级说明
 ------------------------------
 
-In order to support modified hot/cold linking we needed to modify the Makefile, which
-is intended to be modified by you. When upgrading your project (regardless of whether
-you enable hot/cold linking), you must modify your Makefile as follows:
+为了支持修改后的冷/热链接，Makefile 还需要修改，\
+这件事就交给你了。当更新项目时（无论是否启用\
+冷/热链接）都必须按照下列方式修改 Makefile：
 
-1. Remove all lines after `-include ./common.mk`
-2. Add the following two lines above the `-include ./common.mk` line (for example, below `EXTRA_CXXFLAGS=`):
+1. 移除 `-include ./common.mk` 后的所有行
+2. 在 `-include ./common.mk` 这行上面添加下列两行（例如在 `EXTRA_CXXFLAGS=` 下面）：
 
     .. highlight: Makefile
     .. code-block:: Makefile
@@ -37,4 +37,4 @@ you enable hot/cold linking), you must modify your Makefile as follows:
         # Set to 1 to enable hot/cold linking
         USE_PACKAGE:=0
 
-Your Makefile should now be similar to the template `Makefile <https://github.com/purduesigbots/pros/blob/3.1.6/template-Makefile>`_.
+你的 Makefile 现在应该和模板 `Makefile <https://github.com/purduesigbots/pros/blob/3.1.6/template-Makefile>`_ 相似。
