@@ -27,4 +27,4 @@ Usability Improvements:
 
 - ``PROS_USE_SIMPLE_NAMES`` is implemented for all of the API headers in both C and C++
 
-- ``motor_move()`` and its C++ equivalent properly clamp inputs to ``[-127,127]``, so arcade control code will work properly with no clamping of the controller values in user code
+- `motor_move（）``和它的C ++等价程序会正确地将输入缩放到``[-127,127]``，因此街机控制代码将正常工作而不用担心在用户代码中有摇杆值溢出的问题
