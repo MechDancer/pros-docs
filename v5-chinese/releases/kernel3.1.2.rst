@@ -3,11 +3,11 @@ PROS 内核 3.1.2 版本
 =========================
 
 .. post:: 16 October, 2018
-   :tags: blog, kernel-release
+   :tags: 博客, 内核发布
 
 新特性：
 
-- 手柄运行（rumble）电机功能
+- 手柄轰鸣（rumble）电机功能
 
 错误修复：
 

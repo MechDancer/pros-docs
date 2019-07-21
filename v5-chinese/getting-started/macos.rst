@@ -9,8 +9,8 @@
 
 推荐的方法是使用 `Homebrew <https://brew.sh/>`_。
 
-1. 如果你还没装 Homebrew 按照它的 `说明 <https://brew.sh>`_ 安装。这会花上点时间，并可能提示你遵循一些附加的说明。
-2. 当你装好了 Homebrew，运行 :code:`brew tap osx-cross/arm && brew install arm-gcc-bin` 来向包含用于构建 PROS 工程的工具链的仓库注册，然后安装工具链。
+1. 如果你还未安装 Homebrew 按照它的 `说明 <https://brew.sh>`_ 安装。这会花上点时间，并可能提示你遵循一些附加的说明。
+2. 当你安装好了 Homebrew，运行 :code:`brew tap osx-cross/arm && brew install arm-gcc-bin` 来向包含用于构建 PROS 工程的工具链的仓库注册，然后安装工具链。
 3. 运行 :code:`brew tap purduesigbots/pros` 向 Homebrew 注册 PROS 的仓库。
 4. 运行 :code:`brew cask install pros-editor` 安装 PROS 编辑器（CLI 也会被安装）。这会花上一点时间。
 5. 就这样！你现在可以开始使用 PROS 3 了。
@@ -37,15 +37,15 @@
 安装 CLI
 ^^^^^^^^^^^^^^^
 1. 在 `Python 官网 <http://python.org>`_ 安装 >= 3.6 版本的 Python。
-2. 从 `这里 <https://github.com/purduesigbots/pros-cli3/releases/latest>`_ 下载 Python Wheel 文件 （.whl）来下载最新版本的 CLI。当你下载好之后，运行 :code:`python3 -m pip install ~/Downloads/pros-cli-v5_3.X.X-py3-none-any.whl` （将路径替换为你的下载的文件的）。
+2. 从 `这里 <https://github.com/purduesigbots/pros-cli3/releases/latest>`_ 下载 Python Wheel 文件（.whl）来下载最新版本的 CLI。当下载好之后，运行 :code:`python3 -m pip install ~/Downloads/pros-cli-v5_3.X.X-py3-none-any.whl` （将路径替换为你的下载的文件的）。
 
 安装编辑器
 ^^^^^^^^^^^^^^^^^^
 
 .. note:: 如果你打算使用 PROS 以外的编辑器，这部分是可选的。
 
-1. 根据 `他们 WIKI <https://github.com/cquery-project/cquery/wiki/Building-cquery>`_ 上的说明构建并安装 Cquery。
-2. 在我们的 `发布页 <https://github.com/purduesigbots/atom/releases/latest>`_ 上下载 :code:`pros-editor-mac.zip`。当你下载好之后，双击解压，然后把 :code:`PROS Editor.app` 拖到 :code:`/Applications` 里。
+1. 根据他们 `WIKI <https://github.com/cquery-project/cquery/wiki/Building-cquery>`_ 上的说明构建并安装 Cquery。
+2. 在我们的 `发布页面 <https://github.com/purduesigbots/atom/releases/latest>`_ 上下载 :code:`pros-editor-mac.zip`。当下载好之后，双击解压，然后把 :code:`PROS Editor.app` 拖到 :code:`/Applications` 里。
 
 要求
 ------------

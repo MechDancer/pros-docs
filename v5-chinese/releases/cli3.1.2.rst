@@ -1,43 +1,43 @@
 ======================
-PROS CLI 3.1.2 Release
+PROS CLI 3.1.2 版本
 ======================
 
 .. post:: 20 September, 2018
-   :tags: blog, cli-release
+   :tags: 博客, CLI发布
 
-- Improved logging for debugging
-- Added V5 drivers to Windows installers
-- Added V5 Vision Utility to Windows Installers
+- 提升用于调试的日志记录
+- 为 Windows 安装程序添加 V5 驱动
+- 为 Windows 安装程序添加视觉实用工具
 
-Updating to the new version
+更新到新版本
 ===========================
 
 Python PIP
 ----------
 
-Run pip install https://github.com/purduesigbots/pros-cli3/releases/download/3.1.2/pros_cli_v5-3.1.2-py3-none-any.whl (or pip3, depending on your system)
+运行 pip install https://github.com/purduesigbots/pros-cli3/releases/download/3.1.2/pros_cli_v5-3.1.2-py3-none-any.whl（或者 pip3，这取决于你的系统）
 
 Windows
 -------
 
-Download and run the appropriate installer
+下载并运行合适的安装程序
 
 macOS
 -----
 
-See below for the new recommended method of installing the CLI
+参见下方安装 CLI 推荐的新方法
 
-macOS installs
+macOS 安装方法
 ~~~~~~~~~~~~~~
 
-Install Homebrew if it's not already installed. This may take a while.
-Run brew tap purduesigbots/pros
-Run brew cask install gcc-arm-embedded pros-editor (if you want to install only the CLI, you can run brew cask install gcc-arm-embedded && brew install pros-cli instead)
+如果你还未安装 Homebrew，那么去安装一个，这会花上点时间
+运行 brew tap purduesigbots/pros
+运行 brew cask install gcc-arm-embedded pros-editor（如果你仅想安装 CLI，你可以取而代之运行 brew cask install gcc-arm-embedded && brew install pros-cli）
 
-Notes:
-~~~~~~
+注意事项：
+~~~~~~~~~~
 
-- if Homebrew complains about some files existing when trying to install the toolchain (gcc-arm-embedded), run rm -f /usr/local/bin/arm-none-eabi-* to clear the old files out
-- if you already have the PROS CLI installed, or if Homebrew complains about some files existing when trying to install the CLI, you'll want to uninstall it first
-- if you installed using pip, you can run pip3 uninstall pros-cli-v5
-- if you installed using the .app bundle, you can move that bundle to the trash folder, and then run rm -f /usr/local/bin/prosv5 to clear out the old file
+- 如果在安装工具链（gcc-arm-embedded）时 Homebrew 报错说一些文件已经存在，运行 rm -f /usr/local/bin/arm-none-eabi-* 来清除旧文件
+- 如果你已经安装 PROS CLI 或在安装 CLI 时 Homebrew 报错说一些文件已经存在，你需要先卸载它们
+- 如果之前使用 pip 进行的安装，你可以运行 pip3 uninstall pros-cli-v5
+- 如果之前使用 .app 程序包进行的安装，你可以将程序包移入废纸篓，然后运行 rm -f /usr/local/bin/prosv5 来清除旧文件
