@@ -3,7 +3,7 @@ PROS 内核 3.1.4 版本
 =========================
 
 .. post:: 14 November, 2018
-   :tags: blog, kernel-release
+   :tags: 博客, 内核发布
 
 新特性：
 

@@ -3,7 +3,7 @@ PROS 内核 3.1.6 版本
 =========================
 
 .. post:: 18 February, 2019
-   :tags: blog, kernel-release
+   :tags: 博客, 内核发布
 
 .. warning:: 请务必查看以下重要升级说明。
 
@@ -24,7 +24,7 @@ PROS 内核 3.1.6 版本
 重要升级说明
 ------------------------------
 
-为了支持修改后的冷/热链接，Makefile 还需要修改，\
+为了支持修改后的冷/热链接，还需要修改 Makefile，\
 这件事就交给你了。当更新项目时（无论是否启用\
 冷/热链接）都必须按照下列方式修改 Makefile：
 
@@ -37,4 +37,4 @@ PROS 内核 3.1.6 版本
         # Set to 1 to enable hot/cold linking
         USE_PACKAGE:=0
 
-你的 Makefile 现在应该和模板 `Makefile <https://github.com/purduesigbots/pros/blob/3.1.6/template-Makefile>`_ 相似。
+你的 Makefile 现在应该和 `模板 <https://github.com/purduesigbots/pros/blob/3.1.6/template-Makefile>`_ 相似。
