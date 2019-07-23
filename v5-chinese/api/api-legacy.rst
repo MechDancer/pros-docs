@@ -1,38 +1,38 @@
 ==========
-Legacy API
+旧版 API
 ==========
 
 .. note:: Using this functionality requires including ``"pros/api_legacy.h"`` in
           addition to ``"api.h"``.
 
-ADI Functions
+ADI 功能
 =============
 
-analogCalibrate
+模拟校准
 ---------------
 
-Calibrates the analog sensor on the specified channel.
+校准指定通道上的模拟传感器。
 
-This method assumes that the true sensor value is not actively changing at this time and
-computes an average from approximately 500 samples, 1 ms apart, for a 0.5 s period of
-calibration. The average value thus calculated is returned and stored for later calls to the
-`adi_analog_read_calibrated`_ and `adi_analog_read_calibrated_HR`_ functions. These functions will return
-the difference between this value and the current sensor value when called.
+此方法假定此时没有主动更改真正的传感器值,并且
+计算来自大约 500 个样本的平均值,间隔 1 毫秒,持续 0.5 s 的周期
+校准。计算的平均值将返回并存储,以便以后调用
+`adi_analog_read_calibrated`_ 和 `adi_analog_read_calibrated_HR`_ 这些函数将返回
+调用时此值和当前传感器值之间的差异。
 
-Do not use this function when the sensor value might be unstable
-(gyro rotation, accelerometer movement).
+当传感器值可能不稳定时,请勿使用此功能
+(陀螺旋转,加速度计运动)。
 
 .. note::
-   The ADI currently returns data at 50msintervals, despite the calibrate function's
-   1ms sample rate. This sample rate was kept for the sake of being similar to PROS
-   2, and increasing the sample rate would not have a tangible difference in the
-   function's performance.
+   ADI目前以50ms间隔返回数据,尽管有校准功能
+   1ms 采样率。为了与 PROS 相似,保持了此采样率
+   2,提高采样率在
+   功能的性能。
 
-This function uses the following values of ``errno`` when an error state is reached:
+当达到错误状态时,此函数使用以下值"errno":
 
-- ``EINVAL``  - The port number is out of range or the port is not configured to be an analog input.
+- "EINVAL" - 端口号不在范围内,或者端口未配置为模拟输入。
 
-Analogous to `adi_analog_calibrate <./c/adi.html#adi-analog-calibrate>`_.
+类似于`adi_analog_calibrate <./c/adi.html#adi-analog-calibrate>`_.
 
 .. tabs ::
    .. tab :: Prototype
@@ -63,19 +63,19 @@ Analogous to `adi_analog_calibrate <./c/adi.html#adi-analog-calibrate>`_.
 
 ----
 
-analogRead
+模拟读取
 ----------
 
-Reads an analog input channel and returns the 12-bit value.
+读取模拟输入通道并返回 12 位值。
 
-The value returned is undefined if the analog pin has been switched to a different mode.
-The meaning of the returned value varies depending on the sensor attached.
+如果模拟引脚已切换到其他模式,则返回的值未定义。
+返回值的类型因所连接的传感器而异。
 
-This function uses the following values of ``errno`` when an error state is reached:
+当达到错误状态时,此函数使用以下值"errno":
 
-- ``EINVAL``  - The port number is out of range or the port is not configured to be an analog input.
+- "EINVAL" - 端口号不在范围内,或者端口未配置为模拟输入。
 
-Analogous to `adi_analog_read <./c/adi.html#adi-analog-read>`_.
+类似于`adi_analog_read <./c/adi.html#adi-analog-read>`_.
 
 .. tabs ::
    .. tab :: Prototype
