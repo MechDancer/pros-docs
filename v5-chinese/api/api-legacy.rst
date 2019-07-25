@@ -111,17 +111,17 @@ and a value of 4095 reflects an input voltage of nearly 5 V
 analogReadCalibrated
 --------------------
 
-Reads the calibrated value of an analog input channel.
+读取模拟输入通道的校准值。
 
-The `analogCalibrate`_ function must be run first on that channel. This function is
-inappropriate for sensor values intended for integration, as round-off error can accumulate
-causing drift over time. Use `analogReadCalibratedHR`_ instead.
+必须首先在该通道上运行`analogCalibrate`_函数。 这个功能是
+不适合用于积分的传感器值，因为可以累积舍入误差
+导致随时间漂移。 请改用“analogReadCalibratedHR`_”。
 
-This function uses the following values of ``errno`` when an error state is reached:
+当达到错误状态时，此函数使用以下值``errno``：
 
-- ``EINVAL``  - The port number is out of range or the port is not configured to be an analog input.
+ - ``EINVAL``  - 端口号超出范围或端口未配置为模拟输入。
 
-Analogous to `adi_analog_read_calibrated <./c/adi.html#adi-analog-read-calibrated>`_.
+类似于`adi_analog_read_calibrated <./c/adi.html#adi-analog-read-calibrated>`_.
 
 .. tabs ::
    .. tab :: Prototype
@@ -156,21 +156,21 @@ Analogous to `adi_analog_read_calibrated <./c/adi.html#adi-analog-read-calibrate
 analogReadCalibratedHR
 ----------------------
 
-Reads the calibrated value of an analog input channel 1-8 with enhanced precision.
+以更高的精度读取模拟输入通道1-8的校准值。
 
-The `adi_analog_calibrate`_ function must be run first. This is intended for integrated sensor
-values such as gyros and accelerometers to reduce drift due to round-off, and should not be
-used on a sensor such as a line tracker or potentiometer.
+必须先运行`adi_analog_calibrate`_函数。 这适用于集成传感器
+诸如陀螺仪和加速度计之类的值可以减少由于四舍五入引起的误差，并且不应该
+用于传感器，如线跟踪器或电位计。
 
-The value returned actually has 16 bits of "precision", even though the ADC only reads
-12 bits, so that errors induced by the average value being between two values come out
-in the wash when integrated over time. Think of the value as the true value times 16.
+返回的值实际上有16位“精度”，即使ADC只读取
+12位，因此由两个值之间的平均值引起的误差出现
+随着对时间的积分。，可将值视为真实值乘以16。
 
-This function uses the following values of ``errno`` when an error state is reached:
+当达到错误状态时，此函数使用以下值``errno``：
 
-- ``EINVAL``  - The port number is out of range or the port is not configured to be an analog input.
+ - ``EINVAL``  - 端口号超出范围或端口未配置为模拟输入。
 
-Analogous to `adi_analog_read_calibrated_HR <./c/adi.html#adi-analog-read-calibrated-hr>`_.
+类似于'adi_analog_read_calibrated_HR <./ c / adi.html＃adi-analog-read-calibrated-hr>`_。
 
 .. tabs ::
    .. tab :: Prototype
