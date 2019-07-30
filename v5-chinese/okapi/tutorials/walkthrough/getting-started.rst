@@ -1,15 +1,15 @@
 =============================
-Getting Started with OkapiLib
+入门 OkapiLib
 =============================
 
-Introduction
+介绍
 ============
 
-OkapiLib is installed in all new PROS projects by default. If you are unsure if OkapiLib is
-installed, you can check the output of ``prosv5 conduct info-project``. Additionally, OkapiLib's
-header files reside in ``include/okapi``. Once you know that OkapiLib is installed, you can start
-using it by uncommenting OkapiLib's API header include statement in the file ``include/main.h``
-(line 4 below):
+OkapiLib 默认伴随着所有新 PROS 项目安装。如果你不确定 OkapiLib 是否已经安装，\
+你可以检查 ``prosv5 conduct info-project`` 命令的输出。此外，OkapiLib 的头文件位于
+ ``include/okapi``。确认好 OkapiLib 已安装后，就可以开始使用了。\
+不要忘记取消注释文件 ``include/main.h`` 中包括 OkapiLib API 头文件的语句\ 
+（下面这四行：）
 
 .. highlight: cpp
 .. code-block:: cpp
@@ -21,15 +21,15 @@ using it by uncommenting OkapiLib's API header include statement in the file ``i
     #include "okapi/api.hpp"
     //#include "pros/api_legacy.h"
 
-Then, in file ``src/opcontrol.cpp``, remove the statement ``using namespace pros::literals`` (if it exists).
+接下来，在文件 ``src/opcontrol.cpp`` 中移除语句 ``using namespace pros::literals``（如果它存在的话）。
 
-That's it! Take a look at the `other tutorials <../index.html>`_ to get a better understanding
-of the tools Okapilib has.
+就这样！查看 `其他教程 <../index.html>`_ 来更好地理解
+Okapilib 拥有的工具。
 
-Troubleshooting
+疑难解答
 ===============
 
-If OkapiLib is not getting downloaded from GitHub correctly during installation, you can `download
-it manually here <https://github.com/OkapiLib/OkapiLib/releases>`_
-and then install it by running ``prosv5 conduct fetch path/to/okapilib.zip``. Once OkapiLib is
-installed, try creating a PROS project again.
+如果在安装过程中 OkapiLib 并没有从 GitHub 正确下载，你可以你可以在
+`这里 <https://github.com/OkapiLib/OkapiLib/releases>`_ 手动下载，并通过运行
+``prosv5 conduct fetch path/to/okapilib.zip`` 安装。\
+当 OkapiLib 安装好之后，重新创建 PROS 项目。
