@@ -10,17 +10,17 @@ OkapiLib 文档主页
 
    ./*/index
 
-**OkapiLib** is a PROS library for programming VEX V5 robots. This library is intended to raise the
-floor for teams with all levels of experience. New teams should have an easier time getting their
-robot up and running, and veteran teams should find that OkapiLib doesn't get in the way or place
-any limits on functionality.
+**OkapiLib** 是一个用于编程 VEX V5 机器人的 PROS 库。这个库意在提升具有各种经验队伍的\
+发挥空间。对于新队伍而言，他们应该更容易地启动和运行他们的机器人。\
+并且老练的队伍应该会发现 OkapiLib 并不会妨碍或者\
+限制功能。
 
-For tutorials on how to get the most out of OkapiLib, see the **Tutorials** section:
+有关如何充分利用OkapiLib的教程，请参见 **教程** 部分：
 
 :doc:`tutorials/index`
 
-For documentation on using the OkapiLib **API**, see the OkapiLib **API** section:
+有关使用 OkapiLib **API** 的文档，请从参见 OkapiLib **API** 部分：
 
 :doc:`api/index`
 
-Not sure where to go? Take a look at the `Getting Started tutorial <tutorials/walkthrough/getting-started.html>`_.
+不太确定应该先看什么？试试 `入门教程 <tutorials/walkthrough/getting-started.html>`_。

@@ -1,16 +1,16 @@
 =========
-Tutorials
+教程
 =========
 
-Learning a new coding platform is often a rather daunting task. For this
-reason we prepared some small tutorials with examples on how to interact
-with OkapiLib on your VEX V5 system.
+学习一个新的编程平台通常是一项相当艰巨的任务。为此，\
+我们准备了一些小教程和示例，介绍\
+如何与 VEX OkapiLib PROS 的核心组件交互。
 
-The OkapiLib tutorials are split into two sections:
+OkapiLib 教程分为两个部分：
 
 .. contents:: :local:
 
-Walkthrough Tutorials
+演练教程
 =====================
 
 If you want to write full sample programs to learn to use OkapiLib through practical
