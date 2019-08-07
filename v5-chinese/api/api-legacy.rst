@@ -1,38 +1,38 @@
 ==========
-旧版 API
+遗留 API
 ==========
 
-.. note:: Using this functionality requires including ``"pros/api_legacy.h"`` in
-          addition to ``"api.h"``.
+.. note:: 使用该功能需要将 ``"pros/api_legacy.h"`` 包括到
+          ``"api.h"`` 中。
 
-ADI 功能
+ADI 函数
 =============
 
-模拟校准
+analogCalibrate
 ---------------
 
 校准指定通道上的模拟传感器。
 
-此方法假定此时没有主动更改真正的传感器值,并且
-计算来自大约 500 个样本的平均值,间隔 1 毫秒,持续 0.5 s 的周期
-校准。计算的平均值将返回并存储,以便以后调用
-`adi_analog_read_calibrated`_ 和 `adi_analog_read_calibrated_HR`_ 这些函数将返回
+此方法假定此时没有主动更改真正的传感器值，并且会\
+计算来自大约 500 个样本的平均值，间隔 1 毫秒，持续 0.5s 的周期\
+校准。计算的平均值将返回并存储，以便以后调用
+`adi_analog_read_calibrated`_ 和 `adi_analog_read_calibrated_HR`_。这些函数将返回\
 调用时此值和当前传感器值之间的差异。
 
-当传感器值可能不稳定时,请勿使用此功能
-(陀螺旋转,加速度计运动)。
+当传感器值可能不稳定时，请勿使用此功能
+（陀螺旋转、加速度计运动）。
 
 .. note::
-   ADI目前以50ms间隔返回数据,尽管有校准功能
-   1ms 采样率。为了与 PROS 相似,保持了此采样率
-   2,提高采样率在
-   功能的性能。
+   尽管校准功能有
+   1ms 采样率，ADI目前以 50ms 间隔返回数据。
+   为了与 PROS 2 相似，保持了此采样率，提高采样率并不会对\
+   函数运行有明显影响。
 
-当达到错误状态时,此函数使用以下值"errno":
+当达到错误状态时,此函数使用以下值“errno”：
 
-- "EINVAL" - 端口号不在范围内,或者端口未配置为模拟输入。
+- “EINVAL” - 端口号不在范围内，或者端口未配置为模拟输入。
 
-类似于`adi_analog_calibrate <./c/adi.html#adi-analog-calibrate>`_.
+类似于 `adi_analog_calibrate <./c/adi.html#adi-analog-calibrate>`_。
 
 .. tabs ::
    .. tab :: Prototype
@@ -59,23 +59,23 @@ ADI 功能
  port         The ADI port number (from 1-8, 'a'-'h', 'A'-'H') to calibrate
 ============ =================================================================================================================
 
-**Returns:** The average sensor value computed by this function.
+**返回：** 该函数计算出传感器的平均值。
 
 ----
 
-模拟读取
+analogRead
 ----------
 
 读取模拟输入通道并返回 12 位值。
 
-如果模拟引脚已切换到其他模式,则返回的值未定义。
+如果模拟引脚已切换到其他模式，则会返回未定义。\
 返回值的类型因所连接的传感器而异。
 
-当达到错误状态时,此函数使用以下值"errno":
+当达到错误状态时，此函数使用以下值“errno”：
 
-- "EINVAL" - 端口号不在范围内,或者端口未配置为模拟输入。
+- "EINVAL" - 端口号不在范围内，或者端口未配置为模拟输入。
 
-类似于`adi_analog_read <./c/adi.html#adi-analog-read>`_.
+类似于 `adi_analog_read <./c/adi.html#adi-analog-read>`_。
 
 .. tabs ::
    .. tab :: Prototype
@@ -113,7 +113,7 @@ analogReadCalibrated
 
 读取模拟输入通道的校准值。
 
-必须首先在该通道上运行`analogCalibrate`_函数。 这个功能是
+必须首先在该通道上运行 `analogCalibrate`_ 函数。 这个功能是
 不适合用于积分的传感器值，因为可以累积舍入误差
 导致随时间漂移。 请改用“analogReadCalibratedHR`_”。
 
