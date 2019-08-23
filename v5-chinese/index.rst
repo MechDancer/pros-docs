@@ -93,6 +93,7 @@ PROS：文档主页
 
 -   `YdrMaster <https://github.com/YdrMaster>`_
 -   `berberman <https://github.com/berberman>`_
+-   `YQ5 <https://github.com/multi-neo>`_
 
 .. image:: https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png
 
